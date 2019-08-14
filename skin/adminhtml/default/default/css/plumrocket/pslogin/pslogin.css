@@ -200,7 +200,7 @@
 .pslogin-form ul li.qq .soc-li-icon { background-position: 0px -86px; }
 
 .pslogin-form ul li.sinaweibo .soc-li-icon { background-color: #bd4342; }
-.pslogin-form ul li.sinaweibo .soc-li-icon { background-position: -17px -85px; }
+.pslogin-form ul li.sinaweibo .soc-li-icon { background-position: -17px -86px; }
 
 .pslogin-form ul li.soundcloud .soc-li-icon { background-color: #ff5419; }
 .pslogin-form ul li.soundcloud .soc-li-icon { background-position: -33px -85px; }
@@ -277,6 +277,8 @@
 .pslogin-form ul li.wechat .soc-li-icon { background-color: #4ec034; }
 .pslogin-form ul li.wechat .soc-li-icon { background-position: -1px -153px; }
 
+.pslogin-form ul li.naver .soc-li-icon { background-color: #23b300; }
+.pslogin-form ul li.naver .soc-li-icon { background-position: -17px -153px; }
 
 
 .entry-edit-head.pslogin-notinstalled-section {

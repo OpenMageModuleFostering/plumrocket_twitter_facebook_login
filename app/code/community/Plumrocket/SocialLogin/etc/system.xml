@@ -337,7 +337,7 @@
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
-                    
+
                     <fields>
                         <enable translate="label">
                             <label>Enable</label>
@@ -435,7 +435,7 @@
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
-                    
+
                     <fields>
                         <version translate="label">
                             <frontend_type>text</frontend_type>
@@ -455,7 +455,7 @@
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
-                    
+
                     <fields>
                         <version translate="label">
                             <frontend_type>text</frontend_type>
@@ -475,7 +475,7 @@
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
-                    
+
                     <fields>
                         <version translate="label">
                             <frontend_type>text</frontend_type>
@@ -495,7 +495,7 @@
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
-                    
+
                     <fields>
                         <version translate="label">
                             <frontend_type>text</frontend_type>
@@ -515,7 +515,7 @@
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
-                    
+
                     <fields>
                         <version translate="label">
                             <frontend_type>text</frontend_type>
@@ -535,7 +535,7 @@
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
-                    
+
                     <fields>
                         <version translate="label">
                             <frontend_type>text</frontend_type>
@@ -555,7 +555,7 @@
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
-                    
+
                     <fields>
                         <version translate="label">
                             <frontend_type>text</frontend_type>
@@ -575,7 +575,7 @@
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
-                    
+
                     <fields>
                         <version translate="label">
                             <frontend_type>text</frontend_type>
@@ -595,7 +595,7 @@
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
-                    
+
                     <fields>
                         <version translate="label">
                             <frontend_type>text</frontend_type>
@@ -615,7 +615,7 @@
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
-                    
+
                     <fields>
                         <version translate="label">
                             <frontend_type>text</frontend_type>
@@ -627,7 +627,7 @@
                         </version>
                     </fields>
                 </dropbox>
-                
+
                 <disqus>
                     <label>Disqus</label>
                     <sort_order>170</sort_order>
@@ -635,7 +635,7 @@
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
-                    
+
                     <fields>
                         <version translate="label">
                             <frontend_type>text</frontend_type>
@@ -655,7 +655,7 @@
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
-                    
+
                     <fields>
                         <version translate="label">
                             <frontend_type>text</frontend_type>
@@ -675,7 +675,7 @@
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
-                    
+
                     <fields>
                         <version translate="label">
                             <frontend_type>text</frontend_type>
@@ -695,7 +695,7 @@
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
-                    
+
                     <fields>
                         <version translate="label">
                             <frontend_type>text</frontend_type>
@@ -715,7 +715,7 @@
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
-                    
+
                     <fields>
                         <version translate="label">
                             <frontend_type>text</frontend_type>
@@ -735,7 +735,7 @@
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
-                    
+
                     <fields>
                         <version translate="label">
                             <frontend_type>text</frontend_type>
@@ -755,7 +755,7 @@
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
-                    
+
                     <fields>
                         <version translate="label">
                             <frontend_type>text</frontend_type>
@@ -775,7 +775,7 @@
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
-                    
+
                     <fields>
                         <version translate="label">
                             <frontend_type>text</frontend_type>
@@ -795,7 +795,7 @@
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
-                    
+
                     <fields>
                         <version translate="label">
                             <frontend_type>text</frontend_type>
@@ -815,7 +815,7 @@
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
-                    
+
                     <fields>
                         <version translate="label">
                             <frontend_type>text</frontend_type>
@@ -835,7 +835,7 @@
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
-                    
+
                     <fields>
                         <version translate="label">
                             <frontend_type>text</frontend_type>
@@ -855,7 +855,7 @@
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
-                    
+
                     <fields>
                         <version translate="label">
                             <frontend_type>text</frontend_type>
@@ -875,7 +875,7 @@
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
-                    
+
                     <fields>
                         <version translate="label">
                             <frontend_type>text</frontend_type>
@@ -895,7 +895,7 @@
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
-                    
+
                     <fields>
                         <version translate="label">
                             <frontend_type>text</frontend_type>
@@ -915,7 +915,7 @@
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
-                    
+
                     <fields>
                         <version translate="label">
                             <frontend_type>text</frontend_type>
@@ -935,7 +935,7 @@
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
-                    
+
                     <fields>
                         <version translate="label">
                             <frontend_type>text</frontend_type>
@@ -955,7 +955,7 @@
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
-                    
+
                     <fields>
                         <version translate="label">
                             <frontend_type>text</frontend_type>
@@ -975,7 +975,7 @@
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
-                    
+
                     <fields>
                         <version translate="label">
                             <frontend_type>text</frontend_type>
@@ -995,7 +995,7 @@
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
-                    
+
                     <fields>
                         <version translate="label">
                             <frontend_type>text</frontend_type>
@@ -1015,7 +1015,7 @@
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
-                    
+
                     <fields>
                         <version translate="label">
                             <frontend_type>text</frontend_type>
@@ -1035,7 +1035,7 @@
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
-                    
+
                     <fields>
                         <version translate="label">
                             <frontend_type>text</frontend_type>
@@ -1055,7 +1055,7 @@
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
-                    
+
                     <fields>
                         <version translate="label">
                             <frontend_type>text</frontend_type>
@@ -1075,7 +1075,7 @@
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
-                    
+
                     <fields>
                         <version translate="label">
                             <frontend_type>text</frontend_type>
@@ -1095,7 +1095,7 @@
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
-                    
+
                     <fields>
                         <version translate="label">
                             <frontend_type>text</frontend_type>
@@ -1115,7 +1115,7 @@
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
-                    
+
                     <fields>
                         <version translate="label">
                             <frontend_type>text</frontend_type>
@@ -1135,7 +1135,7 @@
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
-                    
+
                     <fields>
                         <version translate="label">
                             <frontend_type>text</frontend_type>
@@ -1155,7 +1155,7 @@
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
-                    
+
                     <fields>
                         <version translate="label">
                             <frontend_type>text</frontend_type>
@@ -1175,7 +1175,7 @@
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
-                    
+
                     <fields>
                         <version translate="label">
                             <frontend_type>text</frontend_type>
@@ -1195,7 +1195,7 @@
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
-                    
+
                     <fields>
                         <version translate="label">
                             <frontend_type>text</frontend_type>
@@ -1215,7 +1215,7 @@
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
-                    
+
                     <fields>
                         <version translate="label">
                             <frontend_type>text</frontend_type>
@@ -1235,7 +1235,7 @@
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
-                    
+
                     <fields>
                         <version translate="label">
                             <frontend_type>text</frontend_type>
@@ -1255,7 +1255,7 @@
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
-                    
+
                     <fields>
                         <version translate="label">
                             <frontend_type>text</frontend_type>
@@ -1275,7 +1275,7 @@
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
-                    
+
                     <fields>
                         <version translate="label">
                             <frontend_type>text</frontend_type>
@@ -1295,7 +1295,7 @@
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
-                    
+
                     <fields>
                         <version translate="label">
                             <frontend_type>text</frontend_type>
@@ -1315,7 +1315,7 @@
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
-                    
+
                     <fields>
                         <version translate="label">
                             <frontend_type>text</frontend_type>
@@ -1335,7 +1335,7 @@
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
-                    
+
                     <fields>
                         <version translate="label">
                             <frontend_type>text</frontend_type>
@@ -1355,7 +1355,7 @@
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
-                    
+
                     <fields>
                         <version translate="label">
                             <frontend_type>text</frontend_type>
@@ -1375,7 +1375,7 @@
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
-                    
+
                     <fields>
                         <version translate="label">
                             <frontend_type>text</frontend_type>
@@ -1395,7 +1395,7 @@
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
-                    
+
                     <fields>
                         <version translate="label">
                             <frontend_type>text</frontend_type>
@@ -1415,7 +1415,7 @@
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
-                    
+
                     <fields>
                         <version translate="label">
                             <frontend_type>text</frontend_type>
@@ -1427,6 +1427,26 @@
                         </version>
                     </fields>
                 </wechat>
+
+                <naver>
+                    <label>NAVER</label>
+                    <sort_order>700</sort_order>
+                    <frontend_type>text</frontend_type>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+
+                    <fields>
+                        <version translate="label">
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>pslogin/system_config_notinstalled</frontend_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </version>
+                    </fields>
+                </naver>
 
             </groups>
         </pslogin>

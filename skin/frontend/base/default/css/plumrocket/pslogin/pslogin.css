@@ -672,6 +672,9 @@
 	.pslogin-block .pslogin-buttons ul li.wechat span.pslogin-button-auto { background-color: #4ec034; }
 	.pslogin-block .pslogin-buttons ul li.wechat .pslogin-button-icon { background-position: -1px -306px; }
 
+	.pslogin-block .pslogin-buttons ul li.naver span.pslogin-button-auto { background-color: #23b300; }
+	.pslogin-block .pslogin-buttons ul li.naver .pslogin-button-icon { background-position: -34px -307px; }
+
 /*======= social buttons =======*/
 #prpop-pop-up-bg .pslogin-block {
 	text-align: center;
@@ -723,7 +726,8 @@
 	}
 
 	#prpop-pop-up-bg.prpop-default .pslogin-block {
-		margin-top: 10px;
+		padding-top: 10px;
+		clear: both;
 	}
 
 	#prpop-pop-up-bg.prpop-default .pslogin-block .pslogin-buttons {

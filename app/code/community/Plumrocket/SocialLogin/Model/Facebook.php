@@ -18,28 +18,28 @@
 
 class Plumrocket_SocialLogin_Model_Facebook extends Plumrocket_SocialLogin_Model_Account
 {
-	protected $_type = 'facebook';
+    protected $_type = 'facebook';
 
     protected $_url = 'https://www.facebook.com/dialog/oauth';
 
-	protected $_fields = array(
-					'user_id' => 'id',
-		            'firstname' => 'first_name',
-		            'lastname' => 'last_name',
-		            'email' => 'email',
-		            'dob' => 'birthday',
+    protected $_fields = array(
+                    'user_id' => 'id',
+                    'firstname' => 'first_name',
+                    'lastname' => 'last_name',
+                    'email' => 'email',
+                    'dob' => 'birthday',
                     'gender' => 'gender',
                     'photo' => 'picture',
-				);
+                );
 
-	protected $_buttonLinkParams = array(
-					'scope' => 'email',
+    protected $_buttonLinkParams = array(
+                    'scope' => 'email',
                     'display' => 'popup',
-				);
+                );
 
     protected $_popupSize = array(650, 350);
 
-	public function _construct()
+    public function _construct()
     {
         parent::_construct();
 
@@ -56,9 +56,9 @@ class Plumrocket_SocialLogin_Model_Facebook extends Plumrocket_SocialLogin_Model
 
     public function loadUserData($response)
     {
-    	if(empty($response)) {
-    		return false;
-    	}
+        if(empty($response)) {
+            return false;
+        }
 
         $data = array();
 
@@ -70,8 +70,11 @@ class Plumrocket_SocialLogin_Model_Facebook extends Plumrocket_SocialLogin_Model
         );
 
         $token = null;
-        if($response = $this->_call('https://graph.facebook.com/oauth/access_token', $params)) {
-            parse_str($response, $token);
+        if ($response = $this->_call('https://graph.facebook.com/oauth/access_token', $params)) {
+            $token = @json_decode($response, true);
+            if (!$token) {
+                parse_str($response, $token);
+            }
         }
         $this->_setLog($response, true);
         $this->_setLog($token, true);
@@ -94,7 +97,7 @@ class Plumrocket_SocialLogin_Model_Facebook extends Plumrocket_SocialLogin_Model
         }
 
         if(!$this->_userData = $this->_prepareData($data)) {
-        	return false;
+            return false;
         }
 
         $this->_setLog($this->_userData, true);
@@ -104,9 +107,9 @@ class Plumrocket_SocialLogin_Model_Facebook extends Plumrocket_SocialLogin_Model
 
     protected function _prepareData($data)
     {
-    	if(empty($data['id'])) {
-    		return false;
-    	}
+        if(empty($data['id'])) {
+            return false;
+        }
 
         return parent::_prepareData($data);
     }
