@@ -1,0 +1,16 @@
+{
+    "name": "OpenMageModuleFostering/Plumrocket_Twitter_Facebook_Login",
+    "type": "magento-module",
+    "license": "End-user-License-Agreement",
+    "homepage": "",
+    "description": "Plumrocket Twitter & Facebook Login v1.x was designed to help online store owners reach as many customers as possible. Offering facebook login or twitter login as registration options is a proven tool to increase the number of clients.",
+    "authors": [
+    {
+        "name": "Plumrocket Team",
+        "email": "support@plumrocket.com"
+    }
+],
+    "suggest": {
+        "magento-hackathon/magento-composer-installer": "*"
+    }
+}
