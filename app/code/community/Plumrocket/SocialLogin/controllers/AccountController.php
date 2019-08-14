@@ -69,6 +69,17 @@ class Plumrocket_SocialLogin_AccountController extends Mage_Core_Controller_Fron
         $session = $this->_getSession();
         $type = $this->getRequest()->getParam('type');
 
+        // Fix if store view have different domains.
+        if ($storeId = $this->_getHelper()->refererStore()) {
+            $store = Mage::getModel('core/store')->load($storeId);
+            $storeUrl = $store->getBaseUrl();
+            if ($store->getId() && $storeUrl != Mage::getBaseUrl()) {
+                $this->_getHelper()->refererStore($storeId);
+                $this->_redirectUrl($storeUrl . "pslogin/account/login/type/{$type}/?" . http_build_query($this->getRequest()->getParams()));
+                return;
+            }
+        }
+
         // API.
         $callTarget = false;
         if($call = $this->_getHelper()->apiCall()) {
@@ -95,10 +106,10 @@ class Plumrocket_SocialLogin_AccountController extends Mage_Core_Controller_Fron
         }
         $model = Mage::getSingleton("pslogin/$type");
 
-        if(!$this->_getHelper()->moduleEnabled() || !$model->enabled()) {
+        /*if(!$this->_getHelper()->moduleEnabled() || !$model->enabled()) {
             return $this->_windowClose();
             // $this->_redirect('customer/account/login');
-        }
+        }*/
 
         $responseTypes = $model->getResponseType();
         if(is_array($responseTypes)) {
@@ -117,7 +128,7 @@ class Plumrocket_SocialLogin_AccountController extends Mage_Core_Controller_Fron
         }
 
         // Switch store.
-        if($storeId = Mage::helper('pslogin')->refererStore()) {
+        if($storeId) {
             Mage::app()->setCurrentStore($storeId);
         }
 
@@ -213,6 +224,11 @@ class Plumrocket_SocialLogin_AccountController extends Mage_Core_Controller_Fron
         }else{
             $this->getResponse()->setBody('<script type="text/javascript">if(window.opener && window.opener.location &&  !window.opener.closed) { window.close(); window.opener.location.href = "'.$redirectUrl.'"; }else{ window.location.href = "'.$redirectUrl.'"; }</script>');
         }
+    }
+
+    public function runjsAction()
+    {
+        $this->getResponse()->setBody('<script type="text/javascript">'. $this->getRequest()->getPost('js') .'</script>');
     }
 
     protected function _windowClose()

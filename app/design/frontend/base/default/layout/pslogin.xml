@@ -42,6 +42,9 @@
             <action ifconfig="pslogin/general/replace_templates" method="setTemplate"><template>pslogin/customer/form/login.phtml</template></action>
             <block type="pslogin/buttons" name="pslogin.customer.form.login.buttons" as="pslogin_buttons" template="pslogin/customer/form/login/buttons.phtml" />
         </reference>
+        <reference name="before_body_end">
+            <block type="core/template" template="pslogin/footer.phtml" />
+        </reference>
     </customer_account_login>
 
     <customer_account_create translate="label">
@@ -49,6 +52,9 @@
             <action ifconfig="pslogin/general/replace_templates" method="setTemplate"><template>pslogin/customer/form/register.phtml</template></action>
             <block type="pslogin/buttons" name="pslogin.customer.form.register.buttons" as="pslogin_buttons" template="pslogin/customer/form/register/buttons.phtml" />
             <!-- <block type="pslogin/share" name="pslogin.customer.form.register.share" as="pslogin_share" template="pslogin/customer/form/register/share.phtml" /> -->
+        </reference>
+        <reference name="before_body_end">
+            <block type="core/template" template="pslogin/footer.phtml" />
         </reference>
     </customer_account_create>
 

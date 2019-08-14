@@ -366,6 +366,11 @@ class Plumrocket_SocialLogin_Helper_Data extends Plumrocket_SocialLogin_Helper_M
                     // Rebuild referer URL to handle the case when SID was changed
                     $referer = Mage::getSingleton('core/url')
                         ->getRebuiltUrl( Mage::helper('core')->urlDecode($referer));
+
+                    // Remove params, like SID.
+                    // $referer = preg_replace('#SID=[[:alnum:]]+#', '', $referer);
+					$referer = strtok($referer, '?');
+
                     if ($this->isUrlInternal($referer)) {
 	                    $redirectUrl = $referer;
 	                }
@@ -415,6 +420,11 @@ class Plumrocket_SocialLogin_Helper_Data extends Plumrocket_SocialLogin_Helper_M
 		}
 
 		return false;
+	}
+
+	public function hasIntegrationModules()
+	{
+		return Mage::helper('core')->isModuleEnabled('Plumrocket_Popuplogin') || Mage::helper('core')->isModuleEnabled('Plumrocket_Newsletterpopup') || Mage::helper('core')->isModuleEnabled('Plumrocket_AdvancedReviewAndReminder');
 	}
 
 	public function isFakeMail($email = null)

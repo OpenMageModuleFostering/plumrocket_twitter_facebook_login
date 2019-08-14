@@ -364,11 +364,11 @@
 
 	.pslogin-block .pslogin-buttons ul {
 		padding: 0;
+		font-size: 0;
 	}
 
 	.pslogin-block .pslogin-buttons ul li {
-		display: block;
-		float: left;
+		display: inline-block;
 		line-height: normal;
 		list-style: none!important;
 		padding: 0!important;

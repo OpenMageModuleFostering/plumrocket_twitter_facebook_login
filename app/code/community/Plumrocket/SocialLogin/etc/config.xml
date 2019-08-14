@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Plumrocket_SocialLogin>
-            <version>1.2.6</version>
+            <version>1.2.7</version>
         </Plumrocket_SocialLogin>
     </modules>
     <frontend>
@@ -14,6 +14,13 @@
                     <frontName>pslogin</frontName>
                 </args>
             </pslogin>
+            <psloginhttp>
+                <use>standard</use>
+                <args>
+                    <module>Plumrocket_SocialLogin</module>
+                    <frontName>psloginhttp</frontName>
+                </args>
+            </psloginhttp>
         </routers>
         <layout>
             <updates>
