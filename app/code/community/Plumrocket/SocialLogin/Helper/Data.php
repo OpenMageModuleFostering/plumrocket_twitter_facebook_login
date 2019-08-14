@@ -59,6 +59,26 @@ class Plumrocket_SocialLogin_Helper_Data extends Mage_Core_Helper_Abstract
 		return $this->moduleEnabled() && Mage::getStoreConfig('pslogin/general/enable_photo');
 	}
 
+	public function getPhotoPath($checkIsEnabled = true)
+	{
+		if($checkIsEnabled && !$this->photoEnabled()) {
+			return false;
+		}
+
+		if(!$customerId = Mage::getSingleton('customer/session')->getCustomerId()) {
+            return false;
+        }
+
+        $path = Mage::getBaseDir(Mage_Core_Model_Store::URL_TYPE_MEDIA) . DS .'pslogin'. DS .'photo'. DS . $customerId .'.'. Plumrocket_SocialLogin_Model_Account::PHOTO_FILE_EXT;
+        $pathUrl = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) .'pslogin/photo/' . $customerId .'.'. Plumrocket_SocialLogin_Model_Account::PHOTO_FILE_EXT;
+
+        if(!file_exists($path)) {
+            return false;
+        }
+
+        return $pathUrl;
+	}
+
 	public function isGlobalScope()
 	{
 		return Mage::getSingleton('customer/customer')->getSharingConfig()->isGlobalScope();
@@ -184,17 +204,15 @@ class Plumrocket_SocialLogin_Helper_Data extends Mage_Core_Helper_Abstract
 
     public function isUrlInternal($url)
     {
-        if (strpos($url, 'http') !== false) {
-            /**
-             * Url must start from base secure or base unsecure url
-             */
+    	return (stripos($url, 'http') === 0); 
+        /*if (strpos($url, 'http') !== false) {
             if ((strpos($url, Mage::app()->getStore()->getBaseUrl()) === 0)
                 || (strpos($url, Mage::app()->getStore()->getBaseUrl(Mage_Core_Model_Store::URL_TYPE_LINK, true)) === 0)
             ) {
                 return true;
             }
         }
-        return false;
+        return false;*/
     }
 
 	public function moduleInvitationsEnabled()

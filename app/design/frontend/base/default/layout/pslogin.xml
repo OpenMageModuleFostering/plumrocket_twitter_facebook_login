@@ -11,6 +11,12 @@
             <block type="pslogin/share" name="pslogin.customer.form.register.sharepopup" as="pslogin_sharepopup" template="pslogin/customer/form/register/sharepopup.phtml" before="content" />
             <block type="pslogin/general" name="pslogin_general" />
         </reference>
+        <reference name="popuplogin_form_login">
+            <block type="pslogin/buttons" name="pslogin.customer.form.login.buttons" as="pslogin_buttons" template="pslogin/customer/form/login/buttons.phtml" />
+        </reference>
+        <reference name="popuplogin_form_register">
+            <block type="pslogin/buttons" name="pslogin.customer.form.register.buttons" as="pslogin_buttons" template="pslogin/customer/form/register/buttons.phtml" />
+        </reference>
     </default>
 
     <customer_account_login translate="label">
@@ -43,6 +49,15 @@
             <block type="pslogin/buttons" name="pslogin.customer.form.login.buttons" as="pslogin_buttons" template="pslogin/customer/form/login/buttons.phtml" />
         </reference>
     </checkout_onepage_index>
+
+    <privatesales_splashpage_login translate="label">
+        <reference name="splashpage_form_login">
+            <block type="pslogin/buttons" name="pslogin.customer.form.login.buttons" as="pslogin_buttons" template="pslogin/customer/form/login/buttons.phtml" />
+        </reference>
+        <reference name="splashpage_form_register">
+            <block type="pslogin/buttons" name="pslogin.customer.form.register.buttons" as="pslogin_buttons" template="pslogin/customer/form/register/buttons.phtml" />
+        </reference>
+    </privatesales_splashpage_login>
 
     <!-- <pslogin_account_sharedata>
         <reference name="root">

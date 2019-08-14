@@ -36,18 +36,7 @@ class Plumrocket_SocialLogin_Block_Page_Html_Welcome extends Mage_Page_Block_Htm
     
     public function getPhotoPath()
     {
-        if(!$customerId = Mage::getSingleton('customer/session')->getCustomerId()) {
-            return false;
-        }
-
-        $path = Mage::getBaseDir(Mage_Core_Model_Store::URL_TYPE_MEDIA) . DS .'pslogin'. DS .'photo'. DS . $customerId .'.'. Plumrocket_SocialLogin_Model_Account::PHOTO_FILE_EXT;
-        $pathUrl = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) .'pslogin/photo/' . $customerId .'.'. Plumrocket_SocialLogin_Model_Account::PHOTO_FILE_EXT;
-
-        if(!file_exists($path)) {
-            return false;
-        }
-
-        return $pathUrl;
+        return Mage::helper('pslogin')->getPhotoPath(false);
     }
 
 }

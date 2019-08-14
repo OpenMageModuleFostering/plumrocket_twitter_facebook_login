@@ -52,7 +52,7 @@ class Plumrocket_SocialLogin_Model_Facebook extends Plumrocket_SocialLogin_Model
 
     public function loadUserData($response)
     {
-    	if(!trim($response)) {
+    	if(empty($response)) {
     		return false;
     	}
 
@@ -95,7 +95,7 @@ class Plumrocket_SocialLogin_Model_Facebook extends Plumrocket_SocialLogin_Model
         return true;
     }
 
-    protected function _prepareData(array $data)
+    protected function _prepareData($data)
     {
     	if(empty($data['id'])) {
     		return false;

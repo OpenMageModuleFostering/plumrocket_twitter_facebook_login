@@ -96,7 +96,7 @@ class Plumrocket_SocialLogin_Block_Buttons extends Mage_Core_Block_Template
     public function showLoginFullButtons()
     {
         $visible = $this->getPreparedButtons('visible');
-        return count($visible) <= 3;
+        return count($visible) <= 6;
     }
 
     public function showRegisterFullButtons()

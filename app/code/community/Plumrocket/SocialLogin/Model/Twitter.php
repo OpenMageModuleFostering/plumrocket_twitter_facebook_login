@@ -193,7 +193,7 @@ class Plumrocket_SocialLogin_Model_Twitter extends Plumrocket_SocialLogin_Model_
         return $result;
     }
 
-    protected function _prepareData(array $data)
+    protected function _prepareData($data)
     {
     	if(empty($data['id'])) {
     		return false;

@@ -40,7 +40,7 @@ class Plumrocket_SocialLogin_Model_Account extends Mage_Core_Model_Abstract
     {
         $this->_init('pslogin/account');
         $this->_websiteId = Mage::app()->getStore()->getWebsiteId();
-        $this->_redirectUri = Mage::getBaseUrl() .'pslogin/account/login/type/'. $this->_type;
+        $this->_redirectUri = Mage::getUrl('pslogin/account/login', array('type' => $this->_type, '_nosid' => true));
         $this->_photoDir = Mage::getBaseDir('media') . DS .'pslogin'. DS .'photo';
 
         $this->_applicationId = trim(Mage::getStoreConfig('pslogin/'. $this->_type .'/application_id'));
@@ -214,7 +214,7 @@ class Plumrocket_SocialLogin_Model_Account extends Mage_Core_Model_Abstract
         return $result;
     }
 
-    protected function _prepareData(array $data)
+    protected function _prepareData($data)
     {
         $_data = array();
         foreach ($this->_fields as $customerField => $userField) {
@@ -291,14 +291,14 @@ class Plumrocket_SocialLogin_Model_Account extends Mage_Core_Model_Abstract
             return;
         }
 
-        try{
-            if($content = file_get_contents($fileUrl)) {
-            	$tmpPath = $this->_photoDir . DS . $customerId .'.tmp';
-                
-                $io = new Varien_Io_File();
-                $io->mkdir($this->_photoDir);
+        $tmpPath = $this->_photoDir . DS . $customerId .'.tmp';
+        $io = new Varien_Io_File();
 
-                if(file_put_contents($tmpPath, $content) > 0) {
+        try{
+            $io->mkdir($this->_photoDir);
+            if($file = file_get_contents($fileUrl)) {
+                if(file_put_contents($tmpPath, $file) > 0) {
+                    
                     $image = new Varien_Image($tmpPath);
                     $image->resize($this->_photoSize);
 
@@ -307,10 +307,12 @@ class Plumrocket_SocialLogin_Model_Account extends Mage_Core_Model_Abstract
 
                     $upload = true;
                 }
-
-                $io->rm($tmpPath);
             }
-        } catch(Exception $e) {}
+        }catch(Exception $e) {}
+
+        if(file_exists($tmpPath)) {
+            $io->rm($tmpPath);
+        }
 
         return $upload;
     }

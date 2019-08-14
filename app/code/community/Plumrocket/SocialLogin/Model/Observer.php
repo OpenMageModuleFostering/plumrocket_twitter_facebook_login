@@ -78,7 +78,11 @@ class Plumrocket_SocialLogin_Model_Observer
         if(!empty($data['provider']) && !empty($data['timeout']) && $data['timeout'] > time()) {
             $model = Mage::getSingleton("pslogin/{$data['provider']}");
             
-            $customerId = $observer->getCustomer()->getId();
+            $customerId = null;
+            if($customer = $observer->getCustomer()) {
+                $customerId = $customer->getId();
+            }
+
             if($customerId) {
                 $model->setUserData($data);
 

@@ -237,7 +237,7 @@
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
-                            <comment>For configuration instructions, please &lt;a href="http://wiki.plumrocket.com/wiki/Magento_Twitter_and_Facebook_Login_v1.x_Facebook_Login_Configuration" target="_blank"&gt;click here&lt;/a&gt;.</comment>
+                            <comment>For configuration instructions, please &lt;a href="http://wiki.plumrocket.com/wiki/Magento_Facebook_Login_Configuration" target="_blank"&gt;click here&lt;/a&gt;.</comment>
                         </enable>
                         <application_id translate="label">
                             <label>Application ID</label>
@@ -327,7 +327,7 @@
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
-                            <comment>For configuration instructions, please &lt;a href="http://wiki.plumrocket.com/wiki/Magento_Twitter_and_Facebook_Login_v1.x_Twitter_Login_Configuration" target="_blank"&gt;click here&lt;/a&gt;.</comment>
+                            <comment>For configuration instructions, please &lt;a href="http://wiki.plumrocket.com/wiki/Magento_Twitter_Login_Configuration" target="_blank"&gt;click here&lt;/a&gt;.</comment>
                         </enable>
                         <application_id translate="label">
                             <label>Consumer key (API Key)</label>
@@ -600,7 +600,7 @@
                 </foursquare>
 
                 <dropbox>
-                    <label>DropBox</label>
+                    <label>Dropbox</label>
                     <sort_order>170</sort_order>
                     <frontend_type>text</frontend_type>
                     <show_in_default>1</show_in_default>

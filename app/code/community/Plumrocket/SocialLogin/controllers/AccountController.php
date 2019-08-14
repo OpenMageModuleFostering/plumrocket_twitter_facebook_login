@@ -138,7 +138,8 @@ class Plumrocket_SocialLogin_AccountController extends Mage_Core_Controller_Fron
 
     protected function _windowClose()
     {
-        $this->getResponse()->setBody('<script type="text/javascript">if(window.name == "pslogin_popup") { window.close(); }</script>');
+        $this->getResponse()->setBody('<script type="text/javascript">window.close();</script>');
+        // $this->getResponse()->setBody('<script type="text/javascript">if(window.name == "pslogin_popup") { window.close(); }</script>');
         return true;
     }
 

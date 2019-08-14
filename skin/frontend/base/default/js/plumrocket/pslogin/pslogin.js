@@ -72,14 +72,14 @@ pjQuery_1_10_2(document).ready(function() {
 	});
 
 	// Share.
-	jQuery('.prpop-close-btn').on('click', function() {
-		jQuery('.pslogin-addedoverlay, .pslogin-pop-up-form').hide();
-		jQuery('html').css('overflow', 'auto');
+	pjQuery_1_10_2('.prpop-close-btn').on('click', function() {
+		pjQuery_1_10_2('.pslogin-addedoverlay, .pslogin-pop-up-form').hide();
+		pjQuery_1_10_2('html').css('overflow', 'auto');
 		return false;
 	});
 
-	if(jQuery('.pslogin-pop-up-form').is(':visible')) {
-		jQuery('html').css('overflow', 'hidden');
+	if(pjQuery_1_10_2('.pslogin-pop-up-form').is(':visible')) {
+		pjQuery_1_10_2('html').css('overflow', 'hidden');
 	}
 
 	// Fake email message.
