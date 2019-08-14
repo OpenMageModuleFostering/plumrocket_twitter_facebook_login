@@ -38,11 +38,11 @@
 
 <div class="block block-checkout-register">
     <div class="block-title">
-        <strong><span><?php if( $this->getQuote()->isAllowedGuestCheckout() ): ?><?php echo $this->__('Checkout as a Guest or Register') ?><?php else: ?><?php echo $this->__('Register to Create an Account') ?><?php endif; ?></span></strong>
+        <strong><span><?php if ( $this->getQuote()->isAllowedGuestCheckout() ): ?><?php echo $this->__('Checkout as a Guest or Register') ?><?php else: ?><?php echo $this->__('Register to Create an Account') ?><?php endif; ?></span></strong>
     </div>
     <div class="block-content">
 
-        <?php if( $this->getQuote()->isAllowedGuestCheckout() ): ?>
+        <?php if ( $this->getQuote()->isAllowedGuestCheckout() ): ?>
         <p><?php echo $this->__('Register with us for future convenience:') ?></p>
         <?php else: ?>
         <p><strong><?php echo $this->__('Register and save time!') ?></strong><br />
@@ -52,15 +52,15 @@
             <li><?php echo $this->__('Easy access to your order history and status') ?></li>
         </ul>
         <?php endif; ?>
-        <?php if( $this->getQuote()->isAllowedGuestCheckout() ): ?>
+        <?php if ( $this->getQuote()->isAllowedGuestCheckout() ): ?>
         <ul class="form-list">
-            <?php if( $this->getQuote()->isAllowedGuestCheckout() ): ?>
+            <?php if ( $this->getQuote()->isAllowedGuestCheckout() ): ?>
             <li class="control">
-                <input type="radio" name="checkout_method" id="login:guest" value="guest"<?php if($this->getQuote()->getCheckoutMethod()==Mage_Checkout_Model_Type_Onepage::METHOD_GUEST): ?> checked="checked"<?php endif; ?> class="radio" /><label for="login:guest"><?php echo $this->__('Checkout as Guest') ?></label>
+                <input type="radio" name="checkout_method" id="login:guest" value="guest"<?php if ($this->getQuote()->getCheckoutMethod()==Mage_Checkout_Model_Type_Onepage::METHOD_GUEST): ?> checked="checked"<?php endif; ?> class="radio" /><label for="login:guest"><?php echo $this->__('Checkout as Guest') ?></label>
             </li>
             <?php endif; ?>
             <li class="control">
-                <input type="radio" name="checkout_method" id="login:register" value="register"<?php if($this->getQuote()->getCheckoutMethod()==Mage_Checkout_Model_Type_Onepage::METHOD_REGISTER || !$this->getQuote()->isAllowedGuestCheckout()): ?> checked="checked"<?php endif ?> class="radio" /><label for="login:register"><?php echo $this->__('Register') ?></label>
+                <input type="radio" name="checkout_method" id="login:register" value="register"<?php if ($this->getQuote()->getCheckoutMethod()==Mage_Checkout_Model_Type_Onepage::METHOD_REGISTER || !$this->getQuote()->isAllowedGuestCheckout()): ?> checked="checked"<?php endif ?> class="radio" /><label for="login:register"><?php echo $this->__('Register') ?></label>
             </li>
         </ul>
         <h4><?php echo $this->__('Register and save time!') ?></h4>
@@ -126,7 +126,7 @@
             <a href="<?php echo $this->getUrl('customer/account/forgotpassword') ?>" class="f-left"><?php echo $this->__('Forgot your password?') ?></a>
         </div>
 
-        <?php if(Mage::helper('pslogin')->modulePositionEnabled('login') && Mage::helper('pslogin')->hasButtons()) : ?>
+        <?php if (Mage::helper('pslogin')->modulePositionEnabled('login') && Mage::helper('pslogin')->hasButtons()) : ?>
             <div class="pslogin-spacer pslogin-clearfix"> 
                 <table>
                     <tr>
@@ -155,7 +155,7 @@
     }
     function onepageLogin(button)
     {
-        if(loginForm.validator && loginForm.validator.validate()){
+        if (loginForm.validator && loginForm.validator.validate()){
             button.disabled = true;
             loginForm.submit();
         }
@@ -169,7 +169,7 @@
     <script type="text/javascript">
     //<![CDATA[
         document.observe("dom:loaded", function() {
-            if($('login:register')) {
+            if ($('login:register')) {
                 $('login:register').checked = true;
                 checkout.setMethod();
             }

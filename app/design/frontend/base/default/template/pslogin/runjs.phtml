@@ -19,7 +19,7 @@
 
 <?php
 $helper = Mage::helper('pslogin');
-if(!$helper->moduleEnabled()) {
+if (!$helper->moduleEnabled()) {
     return;
 }
 ?>
@@ -40,7 +40,7 @@ if(!$helper->moduleEnabled()) {
 	            form.appendChild(textarea);
 
 	            form.submit();
-	        } else if(window.opener) {
+	        } else if (window.opener) {
 	            window.close();
 	        }
 	    }

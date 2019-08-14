@@ -1,103 +1,103 @@
 .social-td {
-	padding-left: 5px;
-	padding-top: 5px;
+    padding-left: 5px;
+    padding-top: 5px;
 }
 
 #sortable-visible { 
-	background-color: #FFFFFF;
+    background-color: #FFFFFF;
 }
 
 #sortable-hidden { 
-	background: #EAEAEA;
-	margin-left: 2%;
+    background: #EAEAEA;
+    margin-left: 2%;
 }
 
 .soc-networks {
-	list-style-type: none;
-	margin: 0; 
-	padding: 0; 
-	float: left; 
-	padding: 0px;
-	width: 49%; 
-	box-sizing: border-box;	
-	height: 110px;			
-	overflow-x: hidden;
-	overflow-y: auto;
-	border: 1px solid #aaa;
+    list-style-type: none;
+    margin: 0; 
+    padding: 0; 
+    float: left; 
+    padding: 0px;
+    width: 49%; 
+    box-sizing: border-box;    
+    height: 110px;            
+    overflow-x: hidden;
+    overflow-y: auto;
+    border: 1px solid #aaa;
 }
 
 .soc-networks.ui-sortable-disabled {
-	background: #EAEAEA!important;
-	color: #8E8E8E;
+    background: #EAEAEA!important;
+    color: #8E8E8E;
 }
 
 .soc-networks.ui-sortable-disabled li:hover {
-	background: #EAEAEA!important;
-	cursor: auto;
+    background: #EAEAEA!important;
+    cursor: auto;
 }
 
 .soc-networks.ui-sortable-disabled li .soc-li-icon {
-	opacity: 0.6;
-	filter: aplha(opacity=60);
+    opacity: 0.6;
+    filter: aplha(opacity=60);
 }
 
 .soc-networks li.ui-sortable-helper {
-	border: 1px solid #CCC;
+    border: 1px solid #CCC;
 }
 
 .div-visible {
-	width: 49%;
-	float: left;
-	font-size: 13px;
+    width: 49%;
+    float: left;
+    font-size: 13px;
 }
 
 .div-hidden {
-	width: 49%;
-	float: left;
-	margin-left: 2%;
-	font-size: 13px;
+    width: 49%;
+    float: left;
+    margin-left: 2%;
+    font-size: 13px;
 }
 
 .soc-networks li {
-	line-height: 30px;
-	border-bottom: 1px solid #CCC;
-	font-size: 13px;
+    line-height: 30px;
+    border-bottom: 1px solid #CCC;
+    font-size: 13px;
 }
 
 .soc-networks li:hover {
-	background: #F6F6F6;
-	cursor: pointer;
+    background: #F6F6F6;
+    cursor: pointer;
 }
 
 .soc-networks li img {
-	float: left;
-	margin-right: 5px;
-	height: 16px;
+    float: left;
+    margin-right: 5px;
+    height: 16px;
 }
 
 #sortable-visible li, #sortable-hidden li, #sortable3 li { 
-	margin: 0px; 
-	padding: 5px; 
-	font-size: 13px;
-	line-height: 16px;
+    margin: 0px; 
+    padding: 5px; 
+    font-size: 13px;
+    line-height: 16px;
 }
 
 .pslogin-form ul li .soc-li-icon {
-	background: url('../../../images/plumrocket/pslogin/social_admin.png');
-	display: block;
-	float: left;
-	width: 16px;
-	height: 16px;
-	margin: 0 5px 0 0;
-	padding: 0;
-	box-sizing: border-box;
+    background: url('../../../images/plumrocket/pslogin/social_admin.png');
+    display: block;
+    float: left;
+    width: 16px;
+    height: 16px;
+    margin: 0 5px 0 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 .pslogin-form ul li .soc-li-text {
-	display: block;
-	float: left;
-	height: 16px;
-	line-height: 16px;
+    display: block;
+    float: left;
+    height: 16px;
+    line-height: 16px;
 }
 
 
@@ -282,20 +282,15 @@
 
 
 .entry-edit-head.pslogin-notinstalled-section {
-	background: #BDBDBD;
+    background: #BDBDBD;
 }
 
 .entry-edit-head.pslogin-notinstalled-section a span.pslogin-notinstalled-title {
-	font-weight: 400;
-	padding-left: 5px;
-	/*color: #ea7601;*/
+    font-weight: 400;
+    padding-left: 5px;
 }
 
-/*.entry-edit-head.pslogin-notinstalled-section a:hover .pslogin-notinstalled-title {
-	text-decoration: underline;
-}*/
-
 .pslogin-notinstalled-section .entry-edit-head {
-	background: none;
+    background: none;
 }
 

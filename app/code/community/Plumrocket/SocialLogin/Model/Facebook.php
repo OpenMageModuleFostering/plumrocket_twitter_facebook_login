@@ -47,16 +47,18 @@ class Plumrocket_SocialLogin_Model_Facebook extends Plumrocket_SocialLogin_Model
             $this->_buttonLinkParams['scope'] .= ',user_birthday';
         }
 
-        $this->_buttonLinkParams = array_merge($this->_buttonLinkParams, array(
+        $this->_buttonLinkParams = array_merge(
+            $this->_buttonLinkParams, array(
             'client_id'     => $this->_applicationId,
             'redirect_uri'  => $this->_redirectUri,
             'response_type' => $this->_responseType
-        ));
+            )
+        );
     }
 
     public function loadUserData($response)
     {
-        if(empty($response)) {
+        if (empty($response)) {
             return false;
         }
 
@@ -76,6 +78,7 @@ class Plumrocket_SocialLogin_Model_Facebook extends Plumrocket_SocialLogin_Model
                 parse_str($response, $token);
             }
         }
+
         $this->_setLog($response, true);
         $this->_setLog($token, true);
 
@@ -85,18 +88,18 @@ class Plumrocket_SocialLogin_Model_Facebook extends Plumrocket_SocialLogin_Model
                 'fields'        => implode(',', $this->_fields)
             );
 
-            if($response = $this->_call('https://graph.facebook.com/me', $params)) {
+            if ($response = $this->_call('https://graph.facebook.com/me', $params)) {
                 $data = json_decode($response, true);
             }
 
-            if(!empty($data['id'])) {
+            if (!empty($data['id'])) {
                 $data['picture'] = 'https://graph.facebook.com/'. $data['id'] .'/picture?return_ssl_resources=true';
             }
 
             $this->_setLog($data, true);
         }
 
-        if(!$this->_userData = $this->_prepareData($data)) {
+        if (!$this->_userData = $this->_prepareData($data)) {
             return false;
         }
 
@@ -107,11 +110,18 @@ class Plumrocket_SocialLogin_Model_Facebook extends Plumrocket_SocialLogin_Model
 
     protected function _prepareData($data)
     {
-        if(empty($data['id'])) {
+        if (empty($data['id'])) {
             return false;
         }
 
         return parent::_prepareData($data);
     }
 
+    public function getSocialUrl()
+    {
+        if ($id = $this->getUserId()) {
+            return 'https://facebook.com/' . $id;
+        }
+        return null;
+    }
 }

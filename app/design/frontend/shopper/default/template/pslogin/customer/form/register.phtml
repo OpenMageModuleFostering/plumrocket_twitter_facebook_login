@@ -42,7 +42,7 @@
         <div class="block-content">
             <?php echo $this->getChildHtml('form_fields_before')?>
             <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
-            <?php if(Mage::helper('pslogin')->modulePositionEnabled('register') && Mage::helper('pslogin')->hasButtons()) : ?>
+            <?php if (Mage::helper('pslogin')->modulePositionEnabled('register') && Mage::helper('pslogin')->hasButtons()) : ?>
                 <?php echo $this->getChildHtml('pslogin_buttons'); ?>
                 <div class="pslogin-spacer pslogin-clearfix"> 
                     <table>

@@ -21,7 +21,7 @@
         <h1><?php echo $this->__('Create an Account') ?></h1>
     </div>
     <?php echo $this->getChildHtml('form_fields_before')?>
-    <?php if(Mage::helper('pslogin')->modulePositionEnabled('register') && Mage::helper('pslogin')->hasButtons()) : ?>
+    <?php if (Mage::helper('pslogin')->modulePositionEnabled('register') && Mage::helper('pslogin')->hasButtons()) : ?>
         <?php echo $this->getChildHtml('pslogin_buttons'); ?>
         <div class="pslogin-spacer pslogin-clearfix"> 
             <table>
@@ -64,7 +64,7 @@
                 <li><?php echo $_gender->setGender($this->getFormData()->getGender())->toHtml() ?></li>
             <?php endif ?>
 
-            <?php if($this->getShowAddressFields()): ?>
+            <?php if ($this->getShowAddressFields()): ?>
                 <li class="hidden">
                     <input type="hidden" name="create_address" value="1" />
                 </li>
@@ -157,7 +157,7 @@
                 <?php if ($this->isNewsletterEnabled()): ?>
                     <li class="control">
                         <div class="input-box">
-                            <input type="checkbox" name="is_subscribed" title="<?php echo $this->__('Sign Up for Newsletter') ?>" value="1" id="is_subscribed"<?php if($this->getFormData()->getIsSubscribed()): ?> checked="checked"<?php endif; ?> class="checkbox" />
+                            <input type="checkbox" name="is_subscribed" title="<?php echo $this->__('Sign Up for Newsletter') ?>" value="1" id="is_subscribed"<?php if ($this->getFormData()->getIsSubscribed()): ?> checked="checked"<?php endif; ?> class="checkbox" />
                         </div>
                         <label for="is_subscribed"><?php echo $this->__('Sign Up for Newsletter') ?></label>
                     </li>
@@ -177,7 +177,7 @@
     <script type="text/javascript">
     //<![CDATA[
         var dataForm = new VarienForm('form-validate', true);
-        <?php if($this->getShowAddressFields()): ?>
+        <?php if ($this->getShowAddressFields()): ?>
         new RegionUpdater('country', 'region', 'region_id', <?php echo $this->helper('directory')->getRegionJson() ?>, undefined, 'zip');
         <?php endif; ?>
     //]]>

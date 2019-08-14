@@ -31,6 +31,7 @@ class Plumrocket_SocialLogin_Block_Page_Html_Header extends Mage_Page_Block_Html
         if (empty($this->_data['logo_src_rwd'])) {
             $this->_data['logo_src_rwd'] = Mage::getStoreConfig(self::RWD_LARGE_LOGO_SRC_CONFIG_PATH);
         }
+
         return $this->getSkinUrl($this->_data['logo_src_rwd']);
     }
 
@@ -44,12 +45,13 @@ class Plumrocket_SocialLogin_Block_Page_Html_Header extends Mage_Page_Block_Html
         if (empty($this->_data['logo_src_rwd_small'])) {
             $this->_data['logo_src_rwd_small'] = Mage::getStoreConfig(self::RWD_SMALL_LOGO_SRC_CONFIG_PATH);
         }
+
         return $this->getSkinUrl($this->_data['logo_src_rwd_small']);
     }
 
     public function getWelcome()
     {
-    	$this->setTemplate('pslogin/page/html/welcome.phtml');
+        $this->setTemplate('pslogin/page/html/welcome.phtml');
         return Mage_Page_Block_Html_Header::_toHtml();
     }
 

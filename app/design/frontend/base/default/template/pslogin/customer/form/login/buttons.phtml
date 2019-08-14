@@ -11,12 +11,12 @@
  * send an email to support@plumrocket.com so we can send you a copy immediately.
  *
  * @package     Plumrocket_SocialLogin
- * @copyright   Copyright (c) 2014 Plumrocket Inc. (http://www.plumrocket.com)
+ * @copyright   Copyright (c) 2017 Plumrocket Inc. (http://www.plumrocket.com)
  * @license     http://wiki.plumrocket.net/wiki/EULA  End-user License Agreement
  */
 ?>
 
-<?php if(Mage::helper('pslogin')->hasButtons()) : ?>
+<?php if (Mage::helper('pslogin')->hasButtons()) : ?>
     <div class="pslogin-block pslogin-login">
 
         <div class="pslogin-spacer pslogin-clearfix">
@@ -29,15 +29,15 @@
                 <li class="pslogin-button <?php echo $button['type']; ?> <?php echo empty($button['visible'])? 'pslogin-hidden' : 'pslogin-visible'; ?>" <?php echo empty($button['visible'])? 'style="display: none;"' : ''; ?> title="<?php echo $this->escapeHtml($button['login_text']); ?>">
                     <a class="pslogin-button-link" rel="nofollow" href="javascript:void(0);" onclick="psLogin('<?php echo $button['href']; ?>', '<?php echo $button['popup_width']; ?>', '<?php echo $button['popup_height']; ?>');" >
 
-                        <?php if($this->showLoginFullButtons() && !empty($button['image']['login'])) : ?>
+                        <?php if ($this->showLoginFullButtons() && !empty($button['image']['login'])) : ?>
                             <img class="pslogin-button-image" src="<?php echo $this->escapeHtml($button['image']['login']); ?>" />
                         <?php endif; ?>
 
-                        <?php if(!$this->showFullButtons() && !empty($button['image']['icon'])) : ?>
+                        <?php if (!$this->showFullButtons() && !empty($button['image']['icon'])) : ?>
                             <img class="pslogin-button-icon-image" src="<?php echo $this->escapeHtml($button['image']['icon']); ?>" />
                         <?php endif; ?>
-                        
-                        <?php if(empty($button['image']['login']) || empty($button['image']['icon'])) : ?>
+
+                        <?php if (empty($button['image']['login']) || empty($button['image']['icon'])) : ?>
                             <span class="pslogin-button-auto <?php echo !empty($button['image']['login'])? 'pslogin-has-button-image' : ''; ?> <?php echo !empty($button['image']['icon'])? 'pslogin-has-button-icon-image' : ''; ?>">
                                 <span class="pslogin-button-icon">
                                     <?php echo !empty($button['image']['icon'])? '<img class="pslogin-button-icon-image" src="'. $this->escapeHtml($button['image']['icon']) .'" />' : ''; ?>
@@ -50,7 +50,7 @@
             <?php endforeach; ?>
             </ul>
 
-            <?php if($this->getPreparedButtons('hidden')) : ?>
+            <?php if ($this->getPreparedButtons('hidden')) : ?>
                 <div class="pslogin-spacer pslogin-clearfix pslogin-showmore"> 
 		            <table>
 		            	<tr>
