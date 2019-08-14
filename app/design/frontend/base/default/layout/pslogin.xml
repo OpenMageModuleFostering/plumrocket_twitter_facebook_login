@@ -77,4 +77,13 @@
             <action ifconfig="pslogin/general/enable" method="setTemplate"><template>pslogin/customer/form/register/sharedata.phtml</template></action>
         </reference>
     </pslogin_account_sharedata> -->
+
+    <!-- Theme Black&White -->
+    <onepagecheckout_index_index>
+        <reference name="customer.login">
+            <action ifconfig="pslogin/general/replace_templates" method="setTemplate"><template>pslogin/onepagecheckout/login.phtml</template></action>
+            <block type="pslogin/buttons" name="pslogin.customer.form.login.buttons" as="pslogin_buttons" template="pslogin/customer/form/login/buttons.phtml" />
+        </reference>
+    </onepagecheckout_index_index>
+
 </layout>

@@ -85,11 +85,15 @@ class Plumrocket_SocialLogin_Helper_Data extends Mage_Core_Helper_Abstract
 
 	public function hasButtons()
 	{
+		if(!$this->moduleEnabled()) {
+			return false;
+		}
+
 		if($customerId = Mage::getSingleton('customer/session')->getCustomerId()) {
             return false;
         }
 
-		return (bool)$this->getPreparedButtons();
+		return (bool)$this->getButtons();
 	}
 
 	public function getPhotoPath($checkIsEnabled = true)

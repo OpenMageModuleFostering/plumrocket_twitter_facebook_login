@@ -214,8 +214,8 @@
 .pslogin-form ul li.xing .soc-li-icon { background-color: #005d5e;}
 .pslogin-form ul li.xing .soc-li-icon { background-position: -84px -85px; }
 
-.pslogin-form ul li.kaixin .soc-li-icon { background-color: #e2332e; }
-.pslogin-form ul li.kaixin .soc-li-icon { background-position: -102px -85px; }
+.pslogin-form ul li.kaixin001 .soc-li-icon { background-color: #e2332e; }
+.pslogin-form ul li.kaixin001 .soc-li-icon { background-position: -102px -85px; }
 
 .pslogin-form ul li.orange .soc-li-icon { background-color: #ff6600; }
 .pslogin-form ul li.orange .soc-li-icon { background-position: -0px -102px; }
@@ -237,14 +237,42 @@
 .pslogin-form ul li.reddit .soc-li-icon { background-color: #337fb9; }
 .pslogin-form ul li.reddit .soc-li-icon { background-position: -102px -102px; }
 
-.pslogin-form ul li.odesc .soc-li-icon { background-color: #7ac043; }
-.pslogin-form ul li.odesc .soc-li-icon { background-position: -1px -119px; }
+.pslogin-form ul li.odesk .soc-li-icon { background-color: #7ac043; }
+.pslogin-form ul li.odesk .soc-li-icon { background-position: -1px -119px; }
 
 .pslogin-form ul li.teamviewer .soc-li-icon { background-color: #0171b9; }
 .pslogin-form ul li.teamviewer .soc-li-icon { background-position: -17px -119px; }
 
 .pslogin-form ul li.skyrock .soc-li-icon { background-color: #009afe; }
 .pslogin-form ul li.skyrock .soc-li-icon { background-position: -34px -119px; }
+
+.pslogin-form ul li.renren .soc-li-icon { background-color: #153765; }
+.pslogin-form ul li.renren .soc-li-icon { background-position: -51px -119px; }
+
+
+.pslogin-form ul li.etsy .soc-li-icon { background-color: #ee5931; }
+.pslogin-form ul li.etsy .soc-li-icon { background-position: -68px -119px; }
+
+.pslogin-form ul li.imgur .soc-li-icon { background-color: #312e2f; }
+.pslogin-form ul li.imgur .soc-li-icon { background-position: -84px -119px; }
+ 
+.pslogin-form ul li.intuit .soc-li-icon { background-color: #B8B8B8; }
+.pslogin-form ul li.intuit .soc-li-icon { background-position: -102px -119px; }
+
+.pslogin-form ul li.mailchimp .soc-li-icon { background-color: #73cff4; }
+.pslogin-form ul li.mailchimp .soc-li-icon { background-position: -1px -136px; }
+
+.pslogin-form ul li.persona .soc-li-icon { background-color: #ee5931; }
+.pslogin-form ul li.persona .soc-li-icon { background-position: -17px -136px; }
+
+.pslogin-form ul li.dribbble .soc-li-icon { background-color: #f26798; }
+.pslogin-form ul li.dribbble .soc-li-icon { background-position: -34px -136px; }
+
+.pslogin-form ul li.goodreads .soc-li-icon { background-color: #743900; }
+.pslogin-form ul li.goodreads .soc-li-icon { background-position: -51px -136px; }
+ 
+.pslogin-form ul li.lastfm .soc-li-icon { background-color: #c02c0c; }
+.pslogin-form ul li.lastfm .soc-li-icon { background-position: -68px -136px; }
 
 .entry-edit-head.pslogin-notinstalled-section {
 	background: #BDBDBD;

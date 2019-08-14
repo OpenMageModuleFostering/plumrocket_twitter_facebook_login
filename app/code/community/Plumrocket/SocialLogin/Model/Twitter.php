@@ -43,12 +43,16 @@ class Plumrocket_SocialLogin_Model_Twitter extends Plumrocket_SocialLogin_Model_
 
 	public function _construct()
     {      
-        parent::_construct();
+        parent::_construct();   
+    }
 
+    public function getProviderLink()
+    {
         $token = $this->_getStartToken();
         if(!empty($token['oauth_token'])) {
             $this->_buttonLinkParams = self::URL_AUTHORIZE .'?oauth_token='. $token['oauth_token'];
         }
+        return parent::getProviderLink();
     }
 
     // Step 2.

@@ -19,6 +19,7 @@
 class Plumrocket_SocialLogin_Block_Buttons extends Mage_Core_Block_Template
 {
     protected $_loaderImg = 'loader.gif';
+    protected $_countFullButtons = 6;
 
     public function getPreparedButtons($part = null)
     {
@@ -33,7 +34,7 @@ class Plumrocket_SocialLogin_Block_Buttons extends Mage_Core_Block_Template
     public function showLoginFullButtons()
     {
         $visible = $this->getPreparedButtons('visible');
-        return count($visible) <= 6;
+        return count($visible) <= $this->_countFullButtons;
     }
 
     public function showRegisterFullButtons()
@@ -44,11 +45,20 @@ class Plumrocket_SocialLogin_Block_Buttons extends Mage_Core_Block_Template
     public function showFullButtons()
     {
         $all = $this->getPreparedButtons();
-        return count($all) <= 6;
+        return count($all) <= $this->_countFullButtons;
     }
 
     public function getLoaderUrl()
     {
         return Mage::getDesign()->getSkinUrl('images/plumrocket/pslogin/'. $this->_loaderImg);
     }
+
+    public function setFullButtonsCount($count)
+    {
+        if(is_numeric($count) && $count >= 0) {
+            $this->_countFullButtons = $count;
+        }
+        return $this;
+    }
+
 }

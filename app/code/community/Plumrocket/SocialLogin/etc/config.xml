@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Plumrocket_SocialLogin>
-            <version>1.1.0</version>
+            <version>1.2.0</version>
         </Plumrocket_SocialLogin>
     </modules>
     <frontend>
@@ -79,6 +79,11 @@
                     <html_welcome>Plumrocket_SocialLogin_Block_Page_Html_Welcome</html_welcome>
                 </rewrite>
             </page>
+            <page>
+                <rewrite>
+                    <html_header>Plumrocket_SocialLogin_Block_Page_Html_Header</html_header>
+                </rewrite>
+            </page>
 		</blocks>
         <resources>
             <pslogin_setup>
@@ -115,6 +120,24 @@
                     </pslogin_observer>
                 </observers>
             </customer_register_success>
+            <http_response_send_before>
+                <observers>
+                    <pslogin_observer>
+                        <type>singleton</type>
+                        <class>pslogin/observer</class>
+                        <method>httpResponseSendBefore</method>
+                    </pslogin_observer>
+                </observers>
+            </http_response_send_before>
+            <customer_logout>
+                <observers>
+                    <pslogin_observer>
+                        <type>singleton</type>
+                        <class>pslogin/observer</class>
+                        <method>customerLogout</method>
+                    </pslogin_observer>
+                </observers>
+            </customer_logout>
         </events>
     </global>
     <default>

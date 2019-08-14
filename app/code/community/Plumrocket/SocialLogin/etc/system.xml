@@ -487,29 +487,9 @@
                     </fields>
                 </live>
 
-                <pinterest>
-                    <label>Pinterest</label>
-                    <sort_order>110</sort_order>
-                    <frontend_type>text</frontend_type>
-                    <show_in_default>1</show_in_default>
-                    <show_in_website>1</show_in_website>
-                    <show_in_store>1</show_in_store>
-                    
-                    <fields>
-                        <version translate="label">
-                            <frontend_type>text</frontend_type>
-                            <frontend_model>pslogin/system_config_notinstalled</frontend_model>
-                            <sort_order>1</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                        </version>
-                    </fields>
-                </pinterest>
-
                 <amazon>
                     <label>Amazon</label>
-                    <sort_order>120</sort_order>
+                    <sort_order>110</sort_order>
                     <frontend_type>text</frontend_type>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
@@ -529,7 +509,7 @@
 
                 <aol>
                     <label>AOL.</label>
-                    <sort_order>130</sort_order>
+                    <sort_order>120</sort_order>
                     <frontend_type>text</frontend_type>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
@@ -549,7 +529,7 @@
 
                 <github>
                     <label>GitHub</label>
-                    <sort_order>140</sort_order>
+                    <sort_order>130</sort_order>
                     <frontend_type>text</frontend_type>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
@@ -569,7 +549,7 @@
 
                 <instagram>
                     <label>Instagram</label>
-                    <sort_order>150</sort_order>
+                    <sort_order>140</sort_order>
                     <frontend_type>text</frontend_type>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
@@ -589,7 +569,7 @@
 
                 <foursquare>
                     <label>Foursquare</label>
-                    <sort_order>160</sort_order>
+                    <sort_order>150</sort_order>
                     <frontend_type>text</frontend_type>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
@@ -609,7 +589,7 @@
 
                 <dropbox>
                     <label>Dropbox</label>
-                    <sort_order>170</sort_order>
+                    <sort_order>160</sort_order>
                     <frontend_type>text</frontend_type>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
@@ -626,10 +606,10 @@
                         </version>
                     </fields>
                 </dropbox>
-
+                
                 <disqus>
                     <label>Disqus</label>
-                    <sort_order>180</sort_order>
+                    <sort_order>170</sort_order>
                     <frontend_type>text</frontend_type>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
@@ -649,7 +629,7 @@
 
                 <livejournal>
                     <label>LiveJournal</label>
-                    <sort_order>190</sort_order>
+                    <sort_order>180</sort_order>
                     <frontend_type>text</frontend_type>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
@@ -669,7 +649,7 @@
 
                 <tumblr>
                     <label>Tumblr</label>
-                    <sort_order>200</sort_order>
+                    <sort_order>190</sort_order>
                     <frontend_type>text</frontend_type>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
@@ -687,29 +667,9 @@
                     </fields>
                 </tumblr>
 
-                <openid>
-                    <label>OpenID</label>
-                    <sort_order>210</sort_order>
-                    <frontend_type>text</frontend_type>
-                    <show_in_default>1</show_in_default>
-                    <show_in_website>1</show_in_website>
-                    <show_in_store>1</show_in_store>
-                    
-                    <fields>
-                        <version translate="label">
-                            <frontend_type>text</frontend_type>
-                            <frontend_model>pslogin/system_config_notinstalled</frontend_model>
-                            <sort_order>1</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                        </version>
-                    </fields>
-                </openid>
-
                 <flickr>
                     <label>Flickr</label>
-                    <sort_order>220</sort_order>
+                    <sort_order>200</sort_order>
                     <frontend_type>text</frontend_type>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
@@ -729,7 +689,7 @@
 
                 <wordpress>
                     <label>WordPress</label>
-                    <sort_order>230</sort_order>
+                    <sort_order>210</sort_order>
                     <frontend_type>text</frontend_type>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
@@ -749,7 +709,7 @@
 
                 <vkontakte>
                     <label>Vkontakte</label>
-                    <sort_order>240</sort_order>
+                    <sort_order>220</sort_order>
                     <frontend_type>text</frontend_type>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
@@ -769,7 +729,7 @@
 
                 <odnoklassniki>
                     <label>Odnoklassniki</label>
-                    <sort_order>250</sort_order>
+                    <sort_order>230</sort_order>
                     <frontend_type>text</frontend_type>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
@@ -789,7 +749,7 @@
 
                 <mailru>
                     <label>Mail.ru</label>
-                    <sort_order>260</sort_order>
+                    <sort_order>240</sort_order>
                     <frontend_type>text</frontend_type>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
@@ -809,7 +769,7 @@
 
                 <yandex>
                     <label>Yandex</label>
-                    <sort_order>270</sort_order>
+                    <sort_order>250</sort_order>
                     <frontend_type>text</frontend_type>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
@@ -829,7 +789,7 @@
 
                 <paypal>
                     <label>PayPal</label>
-                    <sort_order>280</sort_order>
+                    <sort_order>260</sort_order>
                     <frontend_type>text</frontend_type>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
@@ -847,29 +807,9 @@
                     </fields>
                 </paypal>
 
-                <myspace>
-                    <label>MySpace</label>
-                    <sort_order>290</sort_order>
-                    <frontend_type>text</frontend_type>
-                    <show_in_default>1</show_in_default>
-                    <show_in_website>1</show_in_website>
-                    <show_in_store>1</show_in_store>
-                    
-                    <fields>
-                        <version translate="label">
-                            <frontend_type>text</frontend_type>
-                            <frontend_model>pslogin/system_config_notinstalled</frontend_model>
-                            <sort_order>1</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                        </version>
-                    </fields>
-                </myspace>
-
                 <salesforce>
                     <label>Salesforce</label>
-                    <sort_order>300</sort_order>
+                    <sort_order>270</sort_order>
                     <frontend_type>text</frontend_type>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
@@ -887,8 +827,68 @@
                     </fields>
                 </salesforce>
 
-                <steam>
-                    <label>Steam Community</label>
+                <stackoverflow>
+                    <label>Stackoverflow (StackExchange)</label>
+                    <sort_order>280</sort_order>
+                    <frontend_type>text</frontend_type>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    
+                    <fields>
+                        <version translate="label">
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>pslogin/system_config_notinstalled</frontend_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </version>
+                    </fields>
+                </stackoverflow>
+
+                <evernote>
+                    <label>Evernote</label>
+                    <sort_order>290</sort_order>
+                    <frontend_type>text</frontend_type>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    
+                    <fields>
+                        <version translate="label">
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>pslogin/system_config_notinstalled</frontend_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </version>
+                    </fields>
+                </evernote>
+
+                <mixi>
+                    <label>Mixi</label>
+                    <sort_order>300</sort_order>
+                    <frontend_type>text</frontend_type>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    
+                    <fields>
+                        <version translate="label">
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>pslogin/system_config_notinstalled</frontend_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </version>
+                    </fields>
+                </mixi>
+
+                <mydigipass>
+                    <label>MYDIGIPASS.COM</label>
                     <sort_order>310</sort_order>
                     <frontend_type>text</frontend_type>
                     <show_in_default>1</show_in_default>
@@ -905,10 +905,30 @@
                             <show_in_store>1</show_in_store>
                         </version>
                     </fields>
-                </steam>
+                </mydigipass>
 
-                <stackoverflow>
-                    <label>Stackoverflow (StackExchange)</label>
+                <qq>
+                    <label>QQ</label>
+                    <sort_order>320</sort_order>
+                    <frontend_type>text</frontend_type>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    
+                    <fields>
+                        <version translate="label">
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>pslogin/system_config_notinstalled</frontend_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </version>
+                    </fields>
+                </qq>
+
+                <sinaweibo>
+                    <label>Sina Weibo</label>
                     <sort_order>330</sort_order>
                     <frontend_type>text</frontend_type>
                     <show_in_default>1</show_in_default>
@@ -924,31 +944,11 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </version>
-                    </fields>    
-                </stackoverflow>
+                    </fields>
+                </sinaweibo>
 
-                <evernote>
-                    <label>Evernote</label>
-                    <sort_order>340</sort_order>
-                    <frontend_type>text</frontend_type>
-                    <show_in_default>1</show_in_default>
-                    <show_in_website>1</show_in_website>
-                    <show_in_store>1</show_in_store>
-                    
-                    <fields>
-                        <version translate="label">
-                            <frontend_type>text</frontend_type>
-                            <frontend_model>pslogin/system_config_notinstalled</frontend_model>
-                            <sort_order>1</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                        </version>
-                    </fields>    
-                </evernote>
-
-                <mixi>
-                    <label>Mixi</label>
+                <soundcloud>
+                    <label>SoundCloud</label>
                     <sort_order>350</sort_order>
                     <frontend_type>text</frontend_type>
                     <show_in_default>1</show_in_default>
@@ -964,11 +964,11 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </version>
-                    </fields>    
-                </mixi>
+                    </fields>
+                </soundcloud>
 
-                <mydigipass>
-                    <label>MYDIGIPASS.COM</label>
+                <verisign>
+                    <label>Verisign</label>
                     <sort_order>360</sort_order>
                     <frontend_type>text</frontend_type>
                     <show_in_default>1</show_in_default>
@@ -984,11 +984,11 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </version>
-                    </fields>    
-                </mydigipass>
+                    </fields>
+                </verisign>
 
-                <netlog>
-                    <label>Netlog</label>
+                <xing>
+                    <label>XING</label>
                     <sort_order>370</sort_order>
                     <frontend_type>text</frontend_type>
                     <show_in_default>1</show_in_default>
@@ -1004,11 +1004,11 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </version>
-                    </fields>    
-                </netlog>
+                    </fields>
+                </xing>
 
-                <qq>
-                    <label>QQ</label>
+                <kaixin001>
+                    <label>Kaixin001</label>
                     <sort_order>380</sort_order>
                     <frontend_type>text</frontend_type>
                     <show_in_default>1</show_in_default>
@@ -1024,11 +1024,11 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </version>
-                    </fields>    
-                </qq>
+                    </fields>
+                </kaixin001>
 
-                <sinaweibo>
-                    <label>Sina Weibo</label>
+                <persona>
+                    <label>Persona / BrowserID</label>
                     <sort_order>390</sort_order>
                     <frontend_type>text</frontend_type>
                     <show_in_default>1</show_in_default>
@@ -1044,11 +1044,11 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </version>
-                    </fields>    
-                </sinaweibo>
+                    </fields>
+                </persona>
 
-                <soundcloud>
-                    <label>SoundCloud</label>
+                <bitbucket>
+                    <label>Bitbucket</label>
                     <sort_order>400</sort_order>
                     <frontend_type>text</frontend_type>
                     <show_in_default>1</show_in_default>
@@ -1064,11 +1064,11 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </version>
-                    </fields>    
-                </soundcloud>
+                    </fields>
+                </bitbucket>
 
-                <tencentweibo>
-                    <label>Tencent Weibo</label>
+                <skyrock>
+                    <label>Skyrock</label>
                     <sort_order>410</sort_order>
                     <frontend_type>text</frontend_type>
                     <show_in_default>1</show_in_default>
@@ -1084,11 +1084,11 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </version>
-                    </fields>    
-                </tencentweibo>
+                    </fields>
+                </skyrock>
 
-                <verisign>
-                    <label>Verisign</label>
+                <renren>
+                    <label>Renren</label>
                     <sort_order>420</sort_order>
                     <frontend_type>text</frontend_type>
                     <show_in_default>1</show_in_default>
@@ -1104,11 +1104,11 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </version>
-                    </fields>    
-                </verisign>
+                    </fields>
+                </renren>
 
-                <xing>
-                    <label>XING</label>
+                <bitly>
+                    <label>Bitly</label>
                     <sort_order>430</sort_order>
                     <frontend_type>text</frontend_type>
                     <show_in_default>1</show_in_default>
@@ -1124,11 +1124,11 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </version>
-                    </fields>    
-                </xing>
+                    </fields>
+                </bitly>
 
-                <kaixin>
-                    <label>Kaixin</label>
+                <boxcom>
+                    <label>Box.com</label>
                     <sort_order>440</sort_order>
                     <frontend_type>text</frontend_type>
                     <show_in_default>1</show_in_default>
@@ -1144,11 +1144,11 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </version>
-                    </fields>    
-                </kaixin>
+                    </fields>
+                </boxcom>
 
-                <orange>
-                    <label>Orange</label>
+                <vimeo>
+                    <label>Vimeo</label>
                     <sort_order>450</sort_order>
                     <frontend_type>text</frontend_type>
                     <show_in_default>1</show_in_default>
@@ -1164,11 +1164,11 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </version>
-                    </fields>    
-                </orange>
+                    </fields>
+                </vimeo>
 
-                <persona>
-                    <label>Persona / BrowserID</label>
+                <reddit>
+                    <label>Reddit</label>
                     <sort_order>460</sort_order>
                     <frontend_type>text</frontend_type>
                     <show_in_default>1</show_in_default>
@@ -1184,11 +1184,71 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </version>
-                    </fields>    
-                </persona>
+                    </fields>
+                </reddit>
 
-                <bitbucket>
-                    <label>Bitbucket</label>
+                <odesk>
+                    <label>oDesk</label>
+                    <sort_order>470</sort_order>
+                    <frontend_type>text</frontend_type>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    
+                    <fields>
+                        <version translate="label">
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>pslogin/system_config_notinstalled</frontend_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </version>
+                    </fields>
+                </odesk>
+
+                <teamviewer>
+                    <label>TeamViewer</label>
+                    <sort_order>480</sort_order>
+                    <frontend_type>text</frontend_type>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    
+                    <fields>
+                        <version translate="label">
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>pslogin/system_config_notinstalled</frontend_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </version>
+                    </fields>
+                </teamviewer>
+
+                <etsy>
+                    <label>Etsy</label>
+                    <sort_order>490</sort_order>
+                    <frontend_type>text</frontend_type>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    
+                    <fields>
+                        <version translate="label">
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>pslogin/system_config_notinstalled</frontend_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </version>
+                    </fields>
+                </etsy>
+
+                <imgur>
+                    <label>Imgur</label>
                     <sort_order>500</sort_order>
                     <frontend_type>text</frontend_type>
                     <show_in_default>1</show_in_default>
@@ -1204,11 +1264,31 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </version>
-                    </fields>    
-                </bitbucket>
+                    </fields>
+                </imgur>
 
-                <skyrock>
-                    <label>Skyrock</label>
+                <intuit>
+                    <label>Intuit</label>
+                    <sort_order>510</sort_order>
+                    <frontend_type>text</frontend_type>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    
+                    <fields>
+                        <version translate="label">
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>pslogin/system_config_notinstalled</frontend_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </version>
+                    </fields>
+                </intuit>
+
+                <mailchimp>
+                    <label>MailChimp</label>
                     <sort_order>520</sort_order>
                     <frontend_type>text</frontend_type>
                     <show_in_default>1</show_in_default>
@@ -1224,11 +1304,11 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </version>
-                    </fields>    
-                </skyrock>
+                    </fields>
+                </mailchimp>
 
-                <virgilioit>
-                    <label>Virgilio.it</label>
+                <dribbble>
+                    <label>Dribbble</label>
                     <sort_order>530</sort_order>
                     <frontend_type>text</frontend_type>
                     <show_in_default>1</show_in_default>
@@ -1244,11 +1324,11 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </version>
-                    </fields>    
-                </virgilioit>
+                    </fields>
+                </dribbble>
 
-                <renren>
-                    <label>RenRen</label>
+                <goodreads>
+                    <label>Goodreads</label>
                     <sort_order>540</sort_order>
                     <frontend_type>text</frontend_type>
                     <show_in_default>1</show_in_default>
@@ -1264,11 +1344,11 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </version>
-                    </fields>    
-                </renren>
+                    </fields>
+                </goodreads>
 
-                <bitly>
-                    <label>Bitly</label>
+                <lastfm>
+                    <label>Last.fm</label>
                     <sort_order>550</sort_order>
                     <frontend_type>text</frontend_type>
                     <show_in_default>1</show_in_default>
@@ -1284,108 +1364,8 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </version>
-                    </fields>    
-                </bitly>
-
-                <boxcom>
-                    <label>Box</label>
-                    <sort_order>560</sort_order>
-                    <frontend_type>text</frontend_type>
-                    <show_in_default>1</show_in_default>
-                    <show_in_website>1</show_in_website>
-                    <show_in_store>1</show_in_store>
-                    
-                    <fields>
-                        <version translate="label">
-                            <frontend_type>text</frontend_type>
-                            <frontend_model>pslogin/system_config_notinstalled</frontend_model>
-                            <sort_order>1</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                        </version>
-                    </fields>    
-                </boxcom>
-
-                <vimeo>
-                    <label>Vimeo</label>
-                    <sort_order>570</sort_order>
-                    <frontend_type>text</frontend_type>
-                    <show_in_default>1</show_in_default>
-                    <show_in_website>1</show_in_website>
-                    <show_in_store>1</show_in_store>
-                    
-                    <fields>
-                        <version translate="label">
-                            <frontend_type>text</frontend_type>
-                            <frontend_model>pslogin/system_config_notinstalled</frontend_model>
-                            <sort_order>1</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                        </version>
-                    </fields>    
-                </vimeo>
-
-                <reddit>
-                    <label>Reddit</label>
-                    <sort_order>580</sort_order>
-                    <frontend_type>text</frontend_type>
-                    <show_in_default>1</show_in_default>
-                    <show_in_website>1</show_in_website>
-                    <show_in_store>1</show_in_store>
-                    
-                    <fields>
-                        <version translate="label">
-                            <frontend_type>text</frontend_type>
-                            <frontend_model>pslogin/system_config_notinstalled</frontend_model>
-                            <sort_order>1</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                        </version>
-                    </fields>    
-                </reddit>
-
-                <odesc>
-                    <label>oDesc</label>
-                    <sort_order>590</sort_order>
-                    <frontend_type>text</frontend_type>
-                    <show_in_default>1</show_in_default>
-                    <show_in_website>1</show_in_website>
-                    <show_in_store>1</show_in_store>
-                    
-                    <fields>
-                        <version translate="label">
-                            <frontend_type>text</frontend_type>
-                            <frontend_model>pslogin/system_config_notinstalled</frontend_model>
-                            <sort_order>1</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                        </version>
-                    </fields>    
-                </odesc>
-
-                <teamviewer>
-                    <label>TeamViewer</label>
-                    <sort_order>600</sort_order>
-                    <frontend_type>text</frontend_type>
-                    <show_in_default>1</show_in_default>
-                    <show_in_website>1</show_in_website>
-                    <show_in_store>1</show_in_store>
-                    
-                    <fields>
-                        <version translate="label">
-                            <frontend_type>text</frontend_type>
-                            <frontend_model>pslogin/system_config_notinstalled</frontend_model>
-                            <sort_order>1</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                        </version>
-                    </fields>    
-                </teamviewer>
+                    </fields>
+                </lastfm>
 
             </groups>
         </pslogin>

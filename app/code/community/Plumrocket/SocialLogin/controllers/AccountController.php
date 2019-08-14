@@ -18,6 +18,43 @@
 
 class Plumrocket_SocialLogin_AccountController extends Mage_Core_Controller_Front_Action
 {
+    
+    public function useAction()
+    {
+        $session = $this->_getSession();
+        if ($session->isLoggedIn()) {
+            return $this->_windowClose();
+        }
+
+        $type = $this->getRequest()->getParam('type');
+        $className = 'Plumrocket_SocialLogin_Model_'. ucfirst($type);
+        if(!$type || !class_exists($className)) {
+            return $this->_windowClose();
+        }
+        $model = Mage::getSingleton("pslogin/$type");
+
+        if(!$this->_getHelper()->moduleEnabled() || !$model->enabled()) {
+            return $this->_windowClose();
+        }
+        
+        $link = null;
+        switch($model->getProtocol()) {
+
+            case 'OAuth':
+                if($link = $model->getProviderLink()) {
+                    $this->_redirectUrl($link);
+                }else{
+                    $this->getResponse()->setBody($this->__('This Login Application was not configured correctly. Please contact our customer support.'));
+                }
+                break;
+
+            case 'OpenID':
+            case 'BrowserID':
+            default:
+                return $this->_windowClose();
+        }
+        
+    }
 
     public function loginAction()
     {
@@ -28,7 +65,7 @@ class Plumrocket_SocialLogin_AccountController extends Mage_Core_Controller_Fron
         }
 
         $type = $this->getRequest()->getParam('type');
-        $className = "Plumrocket_SocialLogin_Model_$type";
+        $className = 'Plumrocket_SocialLogin_Model_'. ucfirst($type);
         if(!$type || !class_exists($className)) {
             return $this->_windowClose();
             // $this->_redirect('customer/account/login');
@@ -91,11 +128,11 @@ class Plumrocket_SocialLogin_AccountController extends Mage_Core_Controller_Fron
                     }
                 }
                 
-                // Remember customer.
-                $model->setCustomerIdByUserId($customerId);
-
                 // Dispatch event.
                 $this->_dispatchRegisterSuccess($model->getCustomer());
+                
+                // Remember customer.
+                $model->setCustomerIdByUserId($customerId);
 
                 // Post mail.
                 $model->postToMail();
@@ -138,12 +175,26 @@ class Plumrocket_SocialLogin_AccountController extends Mage_Core_Controller_Fron
             $this->_getHelper()->refererLink(null);
         }
 
-        $this->getResponse()->setBody('<script type="text/javascript">window.close(); window.opener.location.href = "'.$redirectUrl.'";</script>');
+        if($this->getRequest()->isXmlHttpRequest()) {
+            $this->getResponse()->clearHeaders()->setHeader('Content-type', 'application/json', true);
+            $this->getResponse()->setBody(json_encode(array(
+                'redirectUrl' => $redirectUrl
+            )));
+        }else{
+            $this->getResponse()->setBody('<script type="text/javascript">window.close(); window.opener.location.href = "'.$redirectUrl.'";</script>');
+        }
     }
 
     protected function _windowClose()
     {
-        $this->getResponse()->setBody('<script type="text/javascript">window.close();</script>');
+        if($this->getRequest()->isXmlHttpRequest()) {
+            $this->getResponse()->clearHeaders()->setHeader('Content-type', 'application/json', true);
+            $this->getResponse()->setBody(json_encode(array(
+                'windowClose' => true
+            )));
+        }else{
+            $this->getResponse()->setBody('<script type="text/javascript">window.close();</script>');
+        }
         // $this->getResponse()->setBody('<script type="text/javascript">if(window.name == "pslogin_popup") { window.close(); }</script>');
         return true;
     }

@@ -21,6 +21,7 @@ class Plumrocket_SocialLogin_Model_Account extends Mage_Core_Model_Abstract
     const PHOTO_FILE_EXT = 'png';
 
     protected $_type = null;
+    protected $_protocol = 'OAuth';
     protected $_websiteId = null;
     protected $_redirectUri = null;
     protected $_userData = array();
@@ -60,7 +61,7 @@ class Plumrocket_SocialLogin_Model_Account extends Mage_Core_Model_Abstract
             'customer_id' => $customerId
         );
 
-        $this->setData($data)->save();
+        $this->addData($data)->save();
         return $this;
     }
 
@@ -223,9 +224,10 @@ class Plumrocket_SocialLogin_Model_Account extends Mage_Core_Model_Abstract
 
         // Convert gender.
         if(!empty($_data['gender'])) {
+            $options = Mage::getResourceSingleton('customer/customer')->getAttribute('gender')->getSource()->getAllOptions(false);
             switch($_data['gender']) {
-                case $this->_gender[0]: $_data['gender'] = 1; break;
-                case $this->_gender[1]: $_data['gender'] = 2; break;
+                case $this->_gender[0]: $_data['gender'] = $options[0]['value']; break;
+                case $this->_gender[1]: $_data['gender'] = $options[1]['value']; break;
                 default: $_data['gender'] = 0;
             }
         }
@@ -356,14 +358,13 @@ class Plumrocket_SocialLogin_Model_Account extends Mage_Core_Model_Abstract
 
     public function getButton()
     {
-        if(empty($this->_applicationId) || empty($this->_secret)) {
+        // Href.
+        if($this->getProtocol() == 'OAuth' && (empty($this->_applicationId) || empty($this->_secret))) {
             $uri = null;
-        }elseif(is_array($this->_buttonLinkParams)) {
-            $uri = $this->_url .'?'. urldecode(http_build_query($this->_buttonLinkParams));
         }else{
-            $uri = $this->_buttonLinkParams;
+            $uri = Mage::getUrl('pslogin/account/use', array('type' => $this->_type));
         }
-        
+
         // Images.
         $image = array();
         $media = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) .'pslogin/';
@@ -391,9 +392,27 @@ class Plumrocket_SocialLogin_Model_Account extends Mage_Core_Model_Abstract
         );
     }
 
+    public function getProviderLink()
+    {
+        if(empty($this->_applicationId) || empty($this->_secret)) {
+            $uri = null;
+        }elseif(is_array($this->_buttonLinkParams)) {
+            $uri = $this->_url .'?'. urldecode(http_build_query($this->_buttonLinkParams));
+        }else{
+            $uri = $this->_buttonLinkParams;
+        }
+
+        return $uri;
+    }
+
     public function getProvider()
     {
         return $this->_type;
+    }
+
+    public function getProtocol()
+    {
+        return $this->_protocol;
     }
 
     public function _setLog($data, $append = false)

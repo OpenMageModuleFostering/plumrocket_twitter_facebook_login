@@ -131,12 +131,18 @@ pjQuery_1_10_2(document).ready(function() {
 	// Callback URL.
 	pjQuery_1_10_2('.pslogin-callbackurl-autofocus').on('focus click', function() {
 		var $this = pjQuery_1_10_2(this);
-		// Get provider name.
+		/*// Get provider name.
 		var name = $this.parents('tr').attr('id');
 		name = name.replace('row_pslogin_', '').replace('_callbackurl', '');
-		$this.val( $this.val().replace('_PROVIDER_', name) );
+		$this.val( $this.val().replace('_PROVIDER_', name) );*/
 
 		$this.select();
 	})
+	.each(function(n, item) {
+		var $item = pjQuery_1_10_2(item);
+		if($item.val().indexOf('http://') >= 0) {
+			$item.next('p.note').find('span span').css('color', 'red');
+		}
+	});
 
 });

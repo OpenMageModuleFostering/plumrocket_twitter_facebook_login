@@ -31,7 +31,8 @@ class Plumrocket_SocialLogin_Block_System_Config_Callbackurl extends Mage_Adminh
 
     protected function _getElementHtml(Varien_Data_Form_Element_Abstract $element)
     {
-        $url = Mage::helper('pslogin')->getCallbackURL('_PROVIDER_');
+        $providerName = str_replace(array('pslogin_', '_callbackurl'), '', $element->getHtmlId());
+        $url = Mage::helper('pslogin')->getCallbackURL($providerName);
         return '<input id="'. $element->getHtmlId() .'" type="text" name="" value="'. $url .'" class="input-text pslogin-callbackurl-autofocus" style="background-color: #EEE; color: #999;" readonly="readonly" />';
     }
 }

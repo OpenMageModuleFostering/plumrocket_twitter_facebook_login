@@ -14,8 +14,10 @@
  * @license     http://wiki.plumrocket.net/wiki/EULA  End-user License Agreement
  */
 
-
+var psloginLoginPath = null;
+var customerLogoutPath = null;
 var showFullButtonsAfterViewMore = false;
+var personaCurrentEmail = false;
 
 pjQuery_1_10_2(document).ready(function() {
 
@@ -66,9 +68,11 @@ pjQuery_1_10_2(document).ready(function() {
 			if($link.data('loader')) {
 				pjQuery_1_10_2(win.document).ready(function() {
 
-					var html = '<html style="height: 100%;"><head></head>';
+					var loaderText = 'Loading...';
+					var html = '<!DOCTYPE html><html style="height: 100%;"><head><meta name="viewport" content="width=device-width, initial-scale=1"><title>'+ loaderText +'</title></head>';
 					html += '<body style="height: 100%; margin: 0; padding: 0;">';
-					html += '<div style="text-align: center; height: 100%;"><img src="'+ $link.data('loader') +'" style="top: 50%; position: relative; margin-top: -64px;" /></div>';
+					//html += '<div style="text-align: center; height: 100%;"><img src="'+ $link.data('loader') +'" alt="Please Wait" class="loader" style="top: 50%; position: relative; margin-top: -64px; display: none;" /></div>';
+					html += '<div style="text-align: center; height: 100%;"><div id="loader" style="top: 50%; position: relative; margin-top: -50px; color: #646464; height:25px; font-size: 25px; text-align: center; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;">'+ loaderText +'</div></div>';
 					html += '</body></html>';
 
 					pjQuery_1_10_2(win.document).contents().html(html);
@@ -94,7 +98,7 @@ pjQuery_1_10_2(document).ready(function() {
 	// Fake email message.
 	pjQuery_1_10_2('.pslogin-fake-email-message .close-message').on('click', function() {
 		pjQuery_1_10_2(this).parent().hide();
-	})
+	});
 
 });
 

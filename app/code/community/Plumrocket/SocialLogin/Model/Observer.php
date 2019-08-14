@@ -105,4 +105,14 @@ class Plumrocket_SocialLogin_Model_Observer
         Mage::app()->getRequest()->setParam(Mage_Core_Controller_Varien_Action::PARAM_NAME_SUCCESS_URL, $redirectUrl);
     }
 
+    public function httpResponseSendBefore($observer)
+    {
+        
+    }
+
+    public function customerLogout()
+    {
+        
+    }
+
 }
