@@ -18,7 +18,7 @@
 
 class Plumrocket_SocialLogin_AccountController extends Mage_Core_Controller_Front_Action
 {
-    
+
     public function useAction()
     {
         $session = $this->_getSession();
@@ -28,30 +28,30 @@ class Plumrocket_SocialLogin_AccountController extends Mage_Core_Controller_Fron
 
         $type = $this->getRequest()->getParam('type');
         $className = 'Plumrocket_SocialLogin_Model_'. ucfirst($type);
-        if(!$type || !class_exists($className)) {
+        if (!$type || !class_exists($className)) {
             return $this->_windowClose();
         }
         $model = Mage::getSingleton("pslogin/$type");
 
-        if(!$this->_getHelper()->moduleEnabled() || !$model->enabled()) {
+        if (!$this->_getHelper()->moduleEnabled() || !$model->enabled()) {
             return $this->_windowClose();
         }
-        
-        if($call = $this->getRequest()->getParam('call')) {
+
+        if ($call = $this->getRequest()->getParam('call')) {
             $this->_getHelper()->apiCall(array(
                 'type'      => $type,
                 'action'    => $call,
             ));
-        }else{
+        } else {
             $this->_getHelper()->apiCall(null);
         }
 
         switch($model->getProtocol()) {
 
             case 'OAuth':
-                if($link = $model->getProviderLink()) {
+                if ($link = $model->getProviderLink()) {
                     $this->_redirectUrl($link);
-                }else{
+                } else {
                     $this->getResponse()->setBody($this->__('This Login Application was not configured correctly. Please contact our customer support.'));
                 }
                 break;
@@ -61,7 +61,7 @@ class Plumrocket_SocialLogin_AccountController extends Mage_Core_Controller_Fron
             default:
                 return $this->_windowClose();
         }
-        
+
     }
 
     public function loginAction()
@@ -82,12 +82,12 @@ class Plumrocket_SocialLogin_AccountController extends Mage_Core_Controller_Fron
 
         // API.
         $callTarget = false;
-        if($call = $this->_getHelper()->apiCall()) {
-            if(isset($call['type']) && $call['type'] == $type && !empty($call['action'])) {
+        if ($call = $this->_getHelper()->apiCall()) {
+            if (isset($call['type']) && $call['type'] == $type && !empty($call['action'])) {
                 $_target = explode('.', $call['action'], 3);
-                if(count($_target) === 3) {
+                if (count($_target) === 3) {
                     $callTarget = $_target;
-                }else{
+                } else {
                     $this->_windowClose();
                     return;
                 }
@@ -100,49 +100,67 @@ class Plumrocket_SocialLogin_AccountController extends Mage_Core_Controller_Fron
         }
 
         $className = 'Plumrocket_SocialLogin_Model_'. ucfirst($type);
-        if(!$type || !class_exists($className)) {
+        if (!$type || !class_exists($className)) {
             return $this->_windowClose();
             // $this->_redirect('customer/account/login');
         }
         $model = Mage::getSingleton("pslogin/$type");
 
-        /*if(!$this->_getHelper()->moduleEnabled() || !$model->enabled()) {
+        /*if (!$this->_getHelper()->moduleEnabled() || !$model->enabled()) {
             return $this->_windowClose();
             // $this->_redirect('customer/account/login');
         }*/
 
         $responseTypes = $model->getResponseType();
-        if(is_array($responseTypes)) {
+        if (is_array($responseTypes)) {
             $response = array();
             foreach ($responseTypes as $responseType) {
                 $response[$responseType] = $this->getRequest()->getParam($responseType);
             }
-        }else{
+        } else {
             $response = $this->getRequest()->getParam($responseTypes);
         }
         $model->_setLog($this->getRequest()->getParams());
 
-        if(!$model->loadUserData($response)) {
+        if (!$model->loadUserData($response)) {
             return $this->_windowClose();
             // $this->_redirect('customer/account/login');
         }
 
         // Switch store.
-        if($storeId) {
+        if ($storeId) {
             Mage::app()->setCurrentStore($storeId);
         }
 
         // API.
-        if($callTarget) {
+        if ($callTarget) {
             list($module, $controller, $action) = $callTarget;
             $this->_forward($action, $controller, $module, array('pslogin' => $model->getUserData()));
             return;
         }
 
-        if($customerId = $model->getCustomerIdByUserId()) {
+        if ($customerId = $model->getCustomerIdByUserId()) {
+            //Check and replace fakeEmail with normal email
+            if ($responseEmail = $model->getUserData('email')) {
+                $customer = Mage::getModel('customer/customer')->load($customerId);
+                if ($customer->getId() && $this->_getHelper()->isFakeMail($customer->getEmail())) {
+                    if ($responseEmail != $customer->getEmail()) {
+                        $otherCustomer = Mage::getModel('customer/customer')
+                            ->getCollection()
+                            ->addFieldToFilter('email', $responseEmail)
+                            ->setPageSize(1)
+                            ->getFirstItem();
+
+                        if (!$otherCustomer->getId()) {
+                            $customer->setEmail($responseEmail)->save();
+                        }
+                    }
+                }
+            }
+
             # Do auth.
             $redirectUrl = $this->_getHelper()->getRedirectUrl();
-        }elseif($customerId = $model->getCustomerIdByEmail()) {
+        } elseif ($customerId = $model->getCustomerIdByEmail()) {
             # Customer with received email was placed in db.
             // Remember customer.
             $model->setCustomerIdByUserId($customerId);
@@ -150,28 +168,28 @@ class Plumrocket_SocialLogin_AccountController extends Mage_Core_Controller_Fron
             $url = $this->_getUrl('customer/account/forgotpassword');
             $message = $this->__('Customer with email (%s) already exists in the database. If you are sure that it is your email address, please <a href="%s">click here</a> to retrieve your password and access your account.', $model->getUserData('email'), $url);
             $session->addNotice($message);
-            
+
             $redirectUrl = $this->_getHelper()->getRedirectUrl();
-        }else{
+        } else {
             # Registration customer.
-            if($customerId = $model->registrationCustomer()) {
+            if ($customerId = $model->registrationCustomer()) {
                 # Success.
                 // Display system messages (before setCustomerIdByUserId(), because reset messages).
-                if($this->_getHelper()->isFakeMail($model->getUserData('email'))) {
+                if ($this->_getHelper()->isFakeMail($model->getUserData('email'))) {
                     $session->addSuccess($this->__('Customer registration successful.'));
-                }else{
+                } else {
                     $session->addSuccess($this->__('Customer registration successful. Your password was send to the email: %s', $model->getUserData('email')));
                 }
-                
-                if($errors = $model->getErrors()) {
+
+                if ($errors = $model->getErrors()) {
                     foreach ($errors as $error) {
                         $session->addNotice($error);
                     }
                 }
-                
+
                 // Dispatch event.
                 $this->_dispatchRegisterSuccess($model->getCustomer());
-                
+
                 // Remember customer.
                 $model->setCustomerIdByUserId($customerId);
 
@@ -182,12 +200,12 @@ class Plumrocket_SocialLogin_AccountController extends Mage_Core_Controller_Fron
                 $this->_getHelper()->showPopup(true);
 
                 $redirectUrl = $this->_getHelper()->getRedirectUrl('register');
-            }else{
+            } else {
                 # Error.
                 $session->setCustomerFormData($model->getUserData());
                 $redirectUrl = $this->_getUrl('customer/account/create', array('_secure' => true));
-                
-                if($errors = $model->getErrors()) {
+
+                if ($errors = $model->getErrors()) {
                     foreach ($errors as $error) {
                         $session->addError($error);
                     }
@@ -203,9 +221,9 @@ class Plumrocket_SocialLogin_AccountController extends Mage_Core_Controller_Fron
             }
         }
 
-        if($customerId) {
+        if ($customerId) {
             // Load photo.
-            if($this->_getHelper()->photoEnabled()) {
+            if ($this->_getHelper()->photoEnabled()) {
                 $model->setCustomerPhoto($customerId);
             }
 
@@ -218,13 +236,13 @@ class Plumrocket_SocialLogin_AccountController extends Mage_Core_Controller_Fron
             $this->_getHelper()->refererLink(null);
         }
 
-        if($this->getRequest()->isXmlHttpRequest()) {
+        if ($this->getRequest()->isXmlHttpRequest()) {
             $this->getResponse()->clearHeaders()->setHeader('Content-type', 'application/json', true);
             $this->getResponse()->setBody(json_encode(array(
                 'redirectUrl' => $redirectUrl
             )));
-        }else{
-            $this->getResponse()->setBody($this->_jsWrap('if(window.opener && window.opener.location &&  !window.opener.closed) { window.close(); window.opener.location.href = "'.$redirectUrl.'"; }else{ window.location.href = "'.$redirectUrl.'"; }'));
+        } else {
+            $this->getResponse()->setBody($this->_jsWrap('if (window.opener && window.opener.location &&  !window.opener.closed) { window.close(); window.opener.location.href = "'.$redirectUrl.'"; } else { window.location.href = "'.$redirectUrl.'"; }'));
 
             Mage::dispatchEvent('prsociallogin_login_success',
                 array('account_controller' => $this, 'redirectUrl' => $redirectUrl)
@@ -239,15 +257,14 @@ class Plumrocket_SocialLogin_AccountController extends Mage_Core_Controller_Fron
 
     protected function _windowClose()
     {
-        if($this->getRequest()->isXmlHttpRequest()) {
+        if ($this->getRequest()->isXmlHttpRequest()) {
             $this->getResponse()->clearHeaders()->setHeader('Content-type', 'application/json', true);
             $this->getResponse()->setBody(json_encode(array(
                 'windowClose' => true
             )));
-        }else{
+        } else {
             $this->getResponse()->setBody($this->_jsWrap('window.close();'));
         }
-        // $this->getResponse()->setBody('<script type="text/javascript">if(window.name == "pslogin_popup") { window.close(); }</script>');
         return true;
     }
 
@@ -282,5 +299,4 @@ class Plumrocket_SocialLogin_AccountController extends Mage_Core_Controller_Fron
     {
         return Mage::helper($path);
     }
-
 }

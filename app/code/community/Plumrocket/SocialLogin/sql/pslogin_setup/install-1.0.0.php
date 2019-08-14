@@ -51,12 +51,28 @@ $table = $installer->getConnection()
     ->addIndex($installer->getIdxName('pslogin/account', array('user_id')),
         array('user_id'))
     ->addIndex($installer->getIdxName('pslogin/account', array('customer_id')),
-        array('customer_id'))
-    ->addForeignKey($installer->getFkName('pslogin/account', 'customer_id', 'customer/entity', 'entity_id'),
-        'customer_id', $installer->getTable('customer/entity'), 'entity_id',
-        Varien_Db_Ddl_Table::ACTION_CASCADE,
-        Varien_Db_Ddl_Table::ACTION_CASCADE)
-    ->setComment('Social Login Customer');
+        array('customer_id'));
+
+    /* Fix - check table engine before setting foreign key */
+    $dbName = (string)Mage::getConfig()->getNode('global/resources/default_setup/connection/dbname');
+    $readResource = $installer->getConnection('core_read');
+    $query = $readResource ->select()
+        ->from('information_schema.TABLES', 'ENGINE')
+        ->where('TABLE_SCHEMA=?', $dbName)
+        ->where('TABLE_NAME=?', $installer->getTable('customer/entity'));
+
+    $tableEngine = $readResource->fetchOne($query);
+
+    if (strtolower($tableEngine) != 'myisam') {
+        $table->addForeignKey($installer->getFkName('pslogin/account', 'customer_id', 'customer/entity', 'entity_id'),
+            'customer_id', $installer->getTable('customer/entity'), 'entity_id',
+            Varien_Db_Ddl_Table::ACTION_CASCADE,
+            Varien_Db_Ddl_Table::ACTION_CASCADE);
+    }
+    /* End fix */
+
+
+$table->setComment('Social Login Customer');
 $installer->getConnection()->createTable($table);
 
 $installer->endSetup();

@@ -18,38 +18,38 @@
 
 class Plumrocket_SocialLogin_Model_Twitter extends Plumrocket_SocialLogin_Model_Account
 {
-	protected $_type = 'twitter';
+    protected $_type = 'twitter';
 
     const URL_REQUEST_TOKEN = 'https://api.twitter.com/oauth/request_token';
     const URL_AUTHORIZE = 'https://api.twitter.com/oauth/authorize';
     const URL_ACCESS_TOKEN = 'https://api.twitter.com/oauth/access_token';
-    const URL_ACCOUNT_DATA = 'https://api.twitter.com/1.1/users/show.json';
+    const URL_ACCOUNT_DATA = 'https://api.twitter.com/1.1/account/verify_credentials.json';
 
-	protected $_responseType = array('oauth_token', 'oauth_verifier');
+    protected $_responseType = array('oauth_token', 'oauth_verifier');
 
-	protected $_fields = array(
-					'user_id' => 'id',
-		            'firstname' => 'name',
-		            'lastname' => 'name2',
-		            'email' => null,
-		            'dob' => null,
+    protected $_fields = array(
+                    'user_id' => 'id',
+                    'firstname' => 'name',
+                    'lastname' => 'name2',
+                    'email' => 'email',
+                    'dob' => null,
                     'gender' => null,
                     'photo' => 'profile_image_url',
-				);
+                );
 
-	protected $_buttonLinkParams = null;
+    protected $_buttonLinkParams = null;
 
     protected $_popupSize = array(630, 650);
 
-	public function _construct()
-    {      
-        parent::_construct();   
+    public function _construct()
+    {
+        parent::_construct();
     }
 
     public function getProviderLink()
     {
         $token = $this->_getStartToken();
-        if(!empty($token['oauth_token'])) {
+        if (!empty($token['oauth_token'])) {
             $this->_buttonLinkParams = self::URL_AUTHORIZE .'?oauth_token='. $token['oauth_token'];
         }
         return parent::getProviderLink();
@@ -58,20 +58,20 @@ class Plumrocket_SocialLogin_Model_Twitter extends Plumrocket_SocialLogin_Model_
     // Step 2.
     public function loadUserData($response)
     {
-        if(empty($response['oauth_token']) || empty($response['oauth_verifier'])) {
+        if (empty($response['oauth_token']) || empty($response['oauth_verifier'])) {
             return false;
         }
-    	
+
         $data = array();
         $session = Mage::getSingleton('customer/session');
 
         $oauth_nonce = md5(uniqid(rand(), true));
         $oauth_timestamp = time();
 
-        if(empty($response['oauth_token']) || empty($response['oauth_verifier']) || !$session->getData('oauth_token_secret')) {
+        if (empty($response['oauth_token']) || empty($response['oauth_verifier']) || !$session->getData('oauth_token_secret')) {
             return false;
         }
-        
+
         $oauth_token = $response['oauth_token'];
         $oauth_verifier = $response['oauth_verifier'];
         $oauth_token_secret = $session->getData('oauth_token_secret');
@@ -101,13 +101,13 @@ class Plumrocket_SocialLogin_Model_Twitter extends Plumrocket_SocialLogin_Model_
         $url .= '&oauth_version=1.0';
 
         $result = null;
-        if($response = $this->_call($url)) {
+        if ($response = $this->_call($url)) {
             parse_str($response, $result);
         }
         $this->_setLog($result);
 
         // Get user data.
-        if(!empty($result['oauth_token']) && !empty($result['oauth_token_secret'])) {
+        if (!empty($result['oauth_token']) && !empty($result['oauth_token_secret'])) {
             $oauth_nonce = md5(uniqid(rand(), true));
             $oauth_timestamp = time();
 
@@ -117,6 +117,7 @@ class Plumrocket_SocialLogin_Model_Twitter extends Plumrocket_SocialLogin_Model_
 
             $oauth_base_text = "GET&";
             $oauth_base_text .= urlencode(self::URL_ACCOUNT_DATA).'&';
+            $oauth_base_text .= urlencode("include_email=true&");
             $oauth_base_text .= urlencode('oauth_consumer_key='.$this->_applicationId.'&');
             $oauth_base_text .= urlencode('oauth_nonce='.$oauth_nonce.'&');
             $oauth_base_text .= urlencode('oauth_signature_method=HMAC-SHA1&');
@@ -129,7 +130,8 @@ class Plumrocket_SocialLogin_Model_Twitter extends Plumrocket_SocialLogin_Model_
             $signature = base64_encode(hash_hmac("sha1", $oauth_base_text, $key, true));
 
             $url = self::URL_ACCOUNT_DATA;
-            $url .= '?oauth_consumer_key=' . $this->_applicationId;
+            $url .= "?include_email=true";
+            $url .= '&oauth_consumer_key=' . $this->_applicationId;
             $url .= '&oauth_nonce=' . $oauth_nonce;
             $url .= '&oauth_signature=' . urlencode($signature);
             $url .= '&oauth_signature_method=HMAC-SHA1';
@@ -139,15 +141,15 @@ class Plumrocket_SocialLogin_Model_Twitter extends Plumrocket_SocialLogin_Model_
             $url .= '&screen_name=' . $screen_name;
 
             $data = array();
-            if($response = $this->_call($url)) {
+            if ($response = $this->_call($url)) {
                 $data = json_decode($response, true);
             }
-            
+
             $this->_setLog($data, true);
         }
-        
-        if(!$this->_userData = $this->_prepareData($data)) {
-        	return false;
+
+        if (!$this->_userData = $this->_prepareData($data)) {
+            return false;
         }
 
         $this->_setLog($this->_userData, true);
@@ -184,11 +186,11 @@ class Plumrocket_SocialLogin_Model_Twitter extends Plumrocket_SocialLogin_Model_
         $url .= '&oauth_timestamp='.$oauth_timestamp;
         $url .= '&oauth_version=1.0';
 
-        if($response = $this->_call($url)) {
+        if ($response = $this->_call($url)) {
             parse_str($response, $result);
         }
 
-        if(!empty($result['oauth_token_secret'])) {
+        if (!empty($result['oauth_token_secret'])) {
             $session = Mage::getSingleton('customer/session');
             // $_SESSION['oauth_token'] = $result['oauth_token'];
             $session->setData('oauth_token_secret', $result['oauth_token_secret']);
@@ -199,11 +201,11 @@ class Plumrocket_SocialLogin_Model_Twitter extends Plumrocket_SocialLogin_Model_
 
     protected function _prepareData($data)
     {
-    	if(empty($data['id'])) {
-    		return false;
-    	}
+        if (empty($data['id'])) {
+            return false;
+        }
 
-        if(!empty($data['name'])) {
+        if (!empty($data['name'])) {
             $nameParts = explode(' ', $data['name'], 2);
             $data['name'] = $nameParts[0];
             $data['name2'] = !empty($nameParts[1])? $nameParts[1] : '';
@@ -211,5 +213,4 @@ class Plumrocket_SocialLogin_Model_Twitter extends Plumrocket_SocialLogin_Model_
 
         return parent::_prepareData($data);
     }
-
 }

@@ -28,7 +28,7 @@ class Plumrocket_SocialLogin_Model_Account extends Mage_Core_Model_Abstract
     protected $_passwordLength = 6;
 
     protected $_photoDir = null;
-    protected $_photoSize = 40;
+    protected $_photoSize = 150;
 
     protected $_applicationId = null;
     protected $_secret = null;
