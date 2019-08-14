@@ -149,10 +149,14 @@ class Plumrocket_SocialLogin_Helper_Data extends Plumrocket_SocialLogin_Helper_M
 
         if(!$defaultStoreId) {
         	$websites = Mage::app()->getWebsites(true);
-        	if(!empty($websites[1])) {
-        		$defaultStoreId = $websites[1]
+        	foreach($websites as $website) {
+        		$defaultStoreId = $website
 		            ->getDefaultGroup()
 		            ->getDefaultStoreId();
+		        
+		        if ($defaultStoreId) {
+		        	break;
+		        }
         	}
         }
 

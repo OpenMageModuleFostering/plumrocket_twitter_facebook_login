@@ -1189,7 +1189,7 @@
                 </reddit>
 
                 <odesk>
-                    <label>oDesk</label>
+                    <label>Upwork (Elance / oDesk)</label>
                     <sort_order>470</sort_order>
                     <frontend_type>text</frontend_type>
                     <show_in_default>1</show_in_default>

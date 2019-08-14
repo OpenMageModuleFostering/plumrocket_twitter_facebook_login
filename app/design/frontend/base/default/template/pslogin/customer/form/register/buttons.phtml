@@ -31,7 +31,7 @@
             <ul>
             <?php foreach ($this->getPreparedButtons() as $button) : ?>
                 <li class="pslogin-button <?php echo $button['type']; ?>" title="<?php echo $this->escapeHtml($button['register_text']); ?>">
-                    <a class="pslogin-button-link" rel="nofollow" href="<?php echo $button['href']; ?>" onclick="psLogin('<?php echo $button['href']; ?>', '<?php echo $button['popup_width']; ?>', '<?php echo $button['popup_height']; ?>');" >
+                    <a class="pslogin-button-link" rel="nofollow" href="javascript:void(0);" onclick="psLogin('<?php echo $button['href']; ?>', '<?php echo $button['popup_width']; ?>', '<?php echo $button['popup_height']; ?>');" >
                         
                         <?php if($this->showRegisterFullButtons()) : ?>
                             <?php if(!empty($button['image']['register'])) : ?>

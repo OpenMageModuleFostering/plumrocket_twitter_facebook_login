@@ -174,7 +174,7 @@ class Plumrocket_SocialLogin_AccountController extends Mage_Core_Controller_Fron
             }else{
                 # Error.
                 $session->setCustomerFormData($model->getUserData());
-                $redirectUrl = $errUrl = $this->_getUrl('customer/account/create', array('_secure' => true));
+                $redirectUrl = $this->_getUrl('customer/account/create', array('_secure' => true));
                 
                 if($errors = $model->getErrors()) {
                     foreach ($errors as $error) {
