@@ -32,6 +32,8 @@
  */
 /** @var $this Mage_Checkout_Block_Onepage_Login */
 ?>
+<?php if (!Mage::getStoreConfig('onestepcheckout/general/enabled')) { ?>
+
 <div class="col2-set">
     <?php echo $this->getChildHtml('login_before')?>
     <div class="col-1">
@@ -167,3 +169,7 @@
     //]]>
     </script>
 <?php endif; ?>
+
+<?php } else {
+    echo $this->setTemplate('onestepcheckout/onepage/login.phtml')->toHtml();
+}

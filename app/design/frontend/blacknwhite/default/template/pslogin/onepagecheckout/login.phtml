@@ -1,3 +1,5 @@
+<?php if (!Mage::getStoreConfig('onestepcheckout/general/enabled')) { ?>
+
 <?php if (!Mage::getSingleton('customer/session')->isLoggedIn()){?>
 <div id="onepagecheckout_loginbox" style="display: none;" class='op_login_area'>
 	<div class='close_la' onclick='close_login();'><i class="fa fa-times"></i></div>
@@ -60,3 +62,7 @@ if($http_mode)
     </script>
 </div>
 <?php }?>
+
+<?php } else {
+    echo $this->setTemplate('onestepcheckout/onepage/login.phtml')->toHtml();
+}

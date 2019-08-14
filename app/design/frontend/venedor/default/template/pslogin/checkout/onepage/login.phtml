@@ -14,6 +14,8 @@
  */
 /** @var $this Mage_Checkout_Block_Onepage_Login */
 ?>
+<?php if (!Mage::getStoreConfig('onestepcheckout/general/enabled')) { ?>
+
 <?php
 $venedor = $this->helper('venedor');
 $rowClass = $venedor->getRowClass();
@@ -139,3 +141,7 @@ $spanClass = $venedor->getSpanClass();
     //]]>
     </script>
 <?php endif; ?>
+
+<?php } else {
+    echo $this->setTemplate('onestepcheckout/onepage/login.phtml')->toHtml();
+}
