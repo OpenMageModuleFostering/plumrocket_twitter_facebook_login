@@ -11,7 +11,7 @@
  * send an email to support@plumrocket.com so we can send you a copy immediately.
  *
  * @package     Plumrocket_SocialLogin
- * @copyright   Copyright (c) 2015 Plumrocket Inc. (http://www.plumrocket.com)
+ * @copyright   Copyright (c) 2014 Plumrocket Inc. (http://www.plumrocket.com)
  * @license     http://wiki.plumrocket.net/wiki/EULA  End-user License Agreement
  */
 
@@ -19,7 +19,7 @@
 class Plumrocket_SocialLogin_Helper_Main extends Mage_Core_Helper_Abstract
 {
 
-    public function getAjaxUrl($route, $params = array())
+	public function getAjaxUrl($route, $params = array())
 	{
         $url = Mage::getUrl($route, $params);
         if (Mage::app()->getStore()->isCurrentlySecure()) {
@@ -111,5 +111,5 @@ class Plumrocket_SocialLogin_Helper_Main extends Mage_Core_Helper_Abstract
 
         return $this;
     }
-
-};
+    
+}

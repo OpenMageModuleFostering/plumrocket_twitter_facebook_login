@@ -181,7 +181,7 @@ class Plumrocket_SocialLogin_AccountController extends Mage_Core_Controller_Fron
                 'redirectUrl' => $redirectUrl
             )));
         }else{
-            $this->getResponse()->setBody('<script type="text/javascript">window.close(); window.opener.location.href = "'.$redirectUrl.'";</script>');
+            $this->getResponse()->setBody('<script type="text/javascript">if(window.opener && window.opener.location &&  !window.opener.closed) { window.close(); window.opener.location.href = "'.$redirectUrl.'"; }else{ window.location.href = "'.$redirectUrl.'"; }</script>');
         }
     }
 

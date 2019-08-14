@@ -741,6 +741,7 @@
 	#prpop-pop-up-bg.glamour-grey .pslogin-spacer {
 		margin: 0 auto 10px;
 		width: 100%;
+		float: left;
 	}
 
 	#prpop-pop-up-bg.glamour-grey .pslogin-spacer.pslogin-showmore .pslogin-bordertext:hover {
@@ -1046,6 +1047,10 @@
 	#prpop-pop-up-bg.prpop-default .pslogin-spacer,
 	#prpop-pop-up-bg.prpop-default .pslogin-block .pslogin-buttons {
 		width: 60%;
+	}
+
+	#prpop-pop-up-bg.glamour-grey .pslogin-spacer {
+		float: none;
 	}
 
 	#prpop-pop-up-bg.glamour-grey .pslogin-spacer,

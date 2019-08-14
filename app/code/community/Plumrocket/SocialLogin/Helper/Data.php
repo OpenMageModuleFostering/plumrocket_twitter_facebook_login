@@ -132,10 +132,13 @@ class Plumrocket_SocialLogin_Helper_Data extends Plumrocket_SocialLogin_Helper_M
 		);
 	}
 
-	public function getCallbackURL($provider)
+	public function getCallbackURL($provider, $byRequest = false)
 	{
+		$request = Mage::app()->getRequest();
+		$websiteCode = $request->getParam('website');
+
 		$defaultStoreId = Mage::app()
-            ->getWebsite(true)
+            ->getWebsite( $byRequest? $websiteCode : null )
             ->getDefaultGroup()
             ->getDefaultStoreId();
 
