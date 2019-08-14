@@ -240,7 +240,7 @@
                             <comment>For configuration instructions, please &lt;a href="http://wiki.plumrocket.com/wiki/Magento_Facebook_Login_Configuration" target="_blank"&gt;click here&lt;/a&gt;.</comment>
                         </enable>
                         <application_id translate="label">
-                            <label>Application ID</label>
+                            <label>App ID</label>
                             <frontend_type>text</frontend_type>
                             <sort_order>2</sort_order>
                             <show_in_default>1</show_in_default>
@@ -248,7 +248,7 @@
                             <show_in_store>1</show_in_store>
                         </application_id>
                         <secret translate="label">
-                            <label>Secret Key</label>
+                            <label>App Secret</label>
                             <frontend_type>obscure</frontend_type>
                             <backend_model>adminhtml/system_config_backend_encrypted</backend_model>
                             <sort_order>3</sort_order>
@@ -262,7 +262,7 @@
                             <backend_model>adminhtml/system_config_backend_image</backend_model>
                             <upload_dir config="system/filesystem/media" scope_info="1">pslogin</upload_dir>
                             <base_url type="media" scope_info="1">pslogin</base_url>
-                            <sort_order>4</sort_order>
+                            <sort_order>5</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
@@ -273,7 +273,7 @@
                             <backend_model>adminhtml/system_config_backend_image</backend_model>
                             <upload_dir config="system/filesystem/media" scope_info="1">pslogin</upload_dir>
                             <base_url type="media" scope_info="1">pslogin</base_url>
-                            <sort_order>5</sort_order>
+                            <sort_order>6</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
@@ -284,7 +284,7 @@
                             <backend_model>adminhtml/system_config_backend_image</backend_model>
                             <upload_dir config="system/filesystem/media" scope_info="1">pslogin</upload_dir>
                             <base_url type="media" scope_info="1">pslogin</base_url>
-                            <sort_order>6</sort_order>
+                            <sort_order>7</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
@@ -293,7 +293,7 @@
                         <login_btn_text translate="label">
                             <label>Login Button Text</label>
                             <frontend_type>text</frontend_type>
-                            <sort_order>7</sort_order>
+                            <sort_order>8</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
@@ -301,7 +301,7 @@
                         <register_btn_text translate="label">
                             <label>Registration Button Text</label>
                             <frontend_type>text</frontend_type>
-                            <sort_order>8</sort_order>
+                            <sort_order>9</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
@@ -330,7 +330,7 @@
                             <comment>For configuration instructions, please &lt;a href="http://wiki.plumrocket.com/wiki/Magento_Twitter_Login_Configuration" target="_blank"&gt;click here&lt;/a&gt;.</comment>
                         </enable>
                         <application_id translate="label">
-                            <label>Consumer key (API Key)</label>
+                            <label>Consumer Key (API Key)</label>
                             <frontend_type>text</frontend_type>
                             <sort_order>2</sort_order>
                             <show_in_default>1</show_in_default>
@@ -338,7 +338,7 @@
                             <show_in_store>1</show_in_store>
                         </application_id>
                         <secret translate="label">
-                            <label>Consumer secret (API Secret)</label>
+                            <label>Consumer Secret (API Secret)</label>
                             <frontend_type>obscure</frontend_type>
                             <backend_model>adminhtml/system_config_backend_encrypted</backend_model>
                             <sort_order>3</sort_order>
@@ -346,13 +346,21 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </secret>
+                        <callbackurl translate="label">
+                            <label>Callback URL</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>pslogin/system_config_callbackurl</frontend_model>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment>This URL should be used while creating new social login application.</comment>
+                        </callbackurl>
                         <icon_btn translate="label">
                             <label>Small Icon Button</label>
                             <frontend_type>image</frontend_type>
                             <backend_model>adminhtml/system_config_backend_image</backend_model>
                             <upload_dir config="system/filesystem/media" scope_info="1">pslogin</upload_dir>
                             <base_url type="media" scope_info="1">pslogin</base_url>
-                            <sort_order>4</sort_order>
+                            <sort_order>5</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
@@ -363,7 +371,7 @@
                             <backend_model>adminhtml/system_config_backend_image</backend_model>
                             <upload_dir config="system/filesystem/media" scope_info="1">pslogin</upload_dir>
                             <base_url type="media" scope_info="1">pslogin</base_url>
-                            <sort_order>5</sort_order>
+                            <sort_order>6</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
@@ -374,7 +382,7 @@
                             <backend_model>adminhtml/system_config_backend_image</backend_model>
                             <upload_dir config="system/filesystem/media" scope_info="1">pslogin</upload_dir>
                             <base_url type="media" scope_info="1">pslogin</base_url>
-                            <sort_order>6</sort_order>
+                            <sort_order>7</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
@@ -383,7 +391,7 @@
                         <login_btn_text translate="label">
                             <label>Login Button Text</label>
                             <frontend_type>text</frontend_type>
-                            <sort_order>7</sort_order>
+                            <sort_order>8</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
@@ -391,7 +399,7 @@
                         <register_btn_text translate="label">
                             <label>Registration Button Text</label>
                             <frontend_type>text</frontend_type>
-                            <sort_order>8</sort_order>
+                            <sort_order>9</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
@@ -899,28 +907,8 @@
                     </fields>
                 </steam>
 
-                <hyves>
-                    <label>Hyves</label>
-                    <sort_order>320</sort_order>
-                    <frontend_type>text</frontend_type>
-                    <show_in_default>1</show_in_default>
-                    <show_in_website>1</show_in_website>
-                    <show_in_store>1</show_in_store>
-                    
-                    <fields>
-                        <version translate="label">
-                            <frontend_type>text</frontend_type>
-                            <frontend_model>pslogin/system_config_notinstalled</frontend_model>
-                            <sort_order>1</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                        </version>
-                    </fields>    
-                </hyves>
-
-                <stackexchange>
-                    <label>StackExchange</label>
+                <stackoverflow>
+                    <label>Stackoverflow (StackExchange)</label>
                     <sort_order>330</sort_order>
                     <frontend_type>text</frontend_type>
                     <show_in_default>1</show_in_default>
@@ -937,7 +925,7 @@
                             <show_in_store>1</show_in_store>
                         </version>
                     </fields>    
-                </stackexchange>
+                </stackoverflow>
 
                 <evernote>
                     <label>Evernote</label>
@@ -1180,7 +1168,7 @@
                 </orange>
 
                 <persona>
-                    <label>Persona</label>
+                    <label>Persona / BrowserID</label>
                     <sort_order>460</sort_order>
                     <frontend_type>text</frontend_type>
                     <show_in_default>1</show_in_default>
@@ -1198,66 +1186,6 @@
                         </version>
                     </fields>    
                 </persona>
-
-                <ulogin>
-                    <label>Ulogin</label>
-                    <sort_order>470</sort_order>
-                    <frontend_type>text</frontend_type>
-                    <show_in_default>1</show_in_default>
-                    <show_in_website>1</show_in_website>
-                    <show_in_store>1</show_in_store>
-                    
-                    <fields>
-                        <version translate="label">
-                            <frontend_type>text</frontend_type>
-                            <frontend_model>pslogin/system_config_notinstalled</frontend_model>
-                            <sort_order>1</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                        </version>
-                    </fields>    
-                </ulogin>
-
-                <oauth>
-                    <label>OAuth</label>
-                    <sort_order>480</sort_order>
-                    <frontend_type>text</frontend_type>
-                    <show_in_default>1</show_in_default>
-                    <show_in_website>1</show_in_website>
-                    <show_in_store>1</show_in_store>
-                    
-                    <fields>
-                        <version translate="label">
-                            <frontend_type>text</frontend_type>
-                            <frontend_model>pslogin/system_config_notinstalled</frontend_model>
-                            <sort_order>1</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                        </version>
-                    </fields>    
-                </oauth>
-
-                <orkut>
-                    <label>Orkut</label>
-                    <sort_order>490</sort_order>
-                    <frontend_type>text</frontend_type>
-                    <show_in_default>1</show_in_default>
-                    <show_in_website>1</show_in_website>
-                    <show_in_store>1</show_in_store>
-                    
-                    <fields>
-                        <version translate="label">
-                            <frontend_type>text</frontend_type>
-                            <frontend_model>pslogin/system_config_notinstalled</frontend_model>
-                            <sort_order>1</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                        </version>
-                    </fields>    
-                </orkut>
 
                 <bitbucket>
                     <label>Bitbucket</label>
@@ -1278,26 +1206,6 @@
                         </version>
                     </fields>    
                 </bitbucket>
-
-                <browserid>
-                    <label>BrowserID</label>
-                    <sort_order>510</sort_order>
-                    <frontend_type>text</frontend_type>
-                    <show_in_default>1</show_in_default>
-                    <show_in_website>1</show_in_website>
-                    <show_in_store>1</show_in_store>
-                    
-                    <fields>
-                        <version translate="label">
-                            <frontend_type>text</frontend_type>
-                            <frontend_model>pslogin/system_config_notinstalled</frontend_model>
-                            <sort_order>1</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                        </version>
-                    </fields>    
-                </browserid>
 
                 <skyrock>
                     <label>Skyrock</label>
@@ -1358,6 +1266,126 @@
                         </version>
                     </fields>    
                 </renren>
+
+                <bitly>
+                    <label>Bitly</label>
+                    <sort_order>550</sort_order>
+                    <frontend_type>text</frontend_type>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    
+                    <fields>
+                        <version translate="label">
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>pslogin/system_config_notinstalled</frontend_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </version>
+                    </fields>    
+                </bitly>
+
+                <boxcom>
+                    <label>Box</label>
+                    <sort_order>560</sort_order>
+                    <frontend_type>text</frontend_type>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    
+                    <fields>
+                        <version translate="label">
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>pslogin/system_config_notinstalled</frontend_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </version>
+                    </fields>    
+                </boxcom>
+
+                <vimeo>
+                    <label>Vimeo</label>
+                    <sort_order>570</sort_order>
+                    <frontend_type>text</frontend_type>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    
+                    <fields>
+                        <version translate="label">
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>pslogin/system_config_notinstalled</frontend_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </version>
+                    </fields>    
+                </vimeo>
+
+                <reddit>
+                    <label>Reddit</label>
+                    <sort_order>580</sort_order>
+                    <frontend_type>text</frontend_type>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    
+                    <fields>
+                        <version translate="label">
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>pslogin/system_config_notinstalled</frontend_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </version>
+                    </fields>    
+                </reddit>
+
+                <odesc>
+                    <label>oDesc</label>
+                    <sort_order>590</sort_order>
+                    <frontend_type>text</frontend_type>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    
+                    <fields>
+                        <version translate="label">
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>pslogin/system_config_notinstalled</frontend_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </version>
+                    </fields>    
+                </odesc>
+
+                <teamviewer>
+                    <label>TeamViewer</label>
+                    <sort_order>600</sort_order>
+                    <frontend_type>text</frontend_type>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    
+                    <fields>
+                        <version translate="label">
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>pslogin/system_config_notinstalled</frontend_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </version>
+                    </fields>    
+                </teamviewer>
 
             </groups>
         </pslogin>

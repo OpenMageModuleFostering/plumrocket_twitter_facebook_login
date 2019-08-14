@@ -16,6 +16,39 @@
 
 pjQuery_1_10_2(document).ready(function() {
 
+
+	if(pjQuery_1_10_2('#pslogin_general_enable').size()) {
+		// Disable empty image fields.
+		if(typeof varienGlobalEvents != undefined) {
+	    	varienGlobalEvents.attachEventHandler('formSubmit', function() {
+	    		pjQuery_1_10_2('[id$=icon_btn], [id$=login_btn], [id$=register_btn]').each(function() {
+	    			var $input = pjQuery_1_10_2(this);
+	    			var canDisable = true;
+
+	    			// If is new value.
+	    			if($input.val()) {
+	    				canDisable = false;
+	    			}
+
+	    			// If is set value and not checked "Delete Image".
+	    			var isImageDelete = pjQuery_1_10_2('#'+ $input.attr('id') +'_delete');
+	    			if(isImageDelete.size() != false) {
+	    				if(isImageDelete.is(':checked')) {
+	    					canDisable = false;
+	    				}else{
+	    					// Remove hidden field, to avoid notice after save.
+	    					isImageDelete.nextAll('input[type="hidden"]').remove();
+	    				}
+	    			}
+
+	    			if(canDisable) {
+	    				$input.attr('disabled', 'disabled');
+	    			}
+	    		});
+	    	});
+	    }
+	}
+	
 	// Set Required fields.
 	// pjQuery_1_10_2('').addClass('validate-alphanum');
 
@@ -94,5 +127,16 @@ pjQuery_1_10_2(document).ready(function() {
 		$section.addClass('pslogin-notinstalled-section');
 		$section.find('a').append('<span class="pslogin-notinstalled-title">(Not installed)</span>');
 	});
+
+	// Callback URL.
+	pjQuery_1_10_2('.pslogin-callbackurl-autofocus').on('focus click', function() {
+		var $this = pjQuery_1_10_2(this);
+		// Get provider name.
+		var name = $this.parents('tr').attr('id');
+		name = name.replace('row_pslogin_', '').replace('_callbackurl', '');
+		$this.val( $this.val().replace('_PROVIDER_', name) );
+
+		$this.select();
+	})
 
 });

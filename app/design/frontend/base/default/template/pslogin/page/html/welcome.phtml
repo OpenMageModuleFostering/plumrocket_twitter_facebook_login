@@ -15,10 +15,11 @@
  * @license     http://wiki.plumrocket.net/wiki/EULA  End-user License Agreement
  */
 ?>
-<span class="pslogin-welcome-msg">
-<?php if( ($image = $this->getPhotoPath()) && $this->photoEnabled() ) { ?>
-    <img src="<?php echo $image; ?>" />
-<?php } ?>
 
-<?php echo $this->getMessage(); ?>
+<span class="pslogin-welcome-msg">
+	<?php if( ($image = $this->getPhotoPath()) && $this->photoEnabled() ) { ?>
+	    <img src="<?php echo $image; ?>" />
+	<?php } ?>
+
+	<?php echo $this->getMessage(); ?>
 </span>

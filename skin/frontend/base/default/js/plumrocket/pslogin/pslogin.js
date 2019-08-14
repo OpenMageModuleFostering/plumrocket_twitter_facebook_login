@@ -13,13 +13,22 @@
  * @copyright   Copyright (c) 2014 Plumrocket Inc. (http://www.plumrocket.com)
  * @license     http://wiki.plumrocket.net/wiki/EULA  End-user License Agreement
  */
- 
+
+
+var showFullButtonsAfterViewMore = false;
+
 pjQuery_1_10_2(document).ready(function() {
 
 	// Show/Hide button.
-	pjQuery_1_10_2('#psloginShowBtn').on('click', function() {
-		pjQuery_1_10_2('.pslogin-buttons .pslogin-hidden').fadeToggle(275);
-		pjQuery_1_10_2(this).parents('div.show-hidden').hide();
+	pjQuery_1_10_2('.pslogin-showmore-button').on('click', function() {
+		var $buttons = pjQuery_1_10_2(this).parents('div.pslogin-buttons');
+		$buttons.find('.pslogin-hidden').fadeToggle(275);
+		pjQuery_1_10_2(this).parents('div.pslogin-showmore').hide();
+
+		if(showFullButtonsAfterViewMore != true) {
+			$buttons.removeClass('pslogin-buttons-showfull');
+			$buttons.parents('div.pslogin-block.pslogin-login').find('.pslogin-title').show();
+		}
 	});
 
 	// Open login window.

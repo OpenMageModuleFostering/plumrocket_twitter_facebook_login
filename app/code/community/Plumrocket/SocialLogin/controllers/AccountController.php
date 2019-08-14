@@ -56,6 +56,11 @@ class Plumrocket_SocialLogin_AccountController extends Mage_Core_Controller_Fron
             // $this->_redirect('customer/account/login');
         }
 
+        // Switch store.
+        if($storeId = Mage::helper('pslogin')->refererStore()) {
+            Mage::app()->setCurrentStore($storeId);
+        }
+
         if($customerId = $model->getCustomerIdByUserId()) {
             # Do auth.
             $redirectUrl = $this->_getHelper()->getRedirectUrl();

@@ -40,7 +40,7 @@ class Plumrocket_SocialLogin_Model_Account extends Mage_Core_Model_Abstract
     {
         $this->_init('pslogin/account');
         $this->_websiteId = Mage::app()->getStore()->getWebsiteId();
-        $this->_redirectUri = Mage::getUrl('pslogin/account/login', array('type' => $this->_type, '_nosid' => true));
+        $this->_redirectUri = Mage::helper('pslogin')->getCallbackURL($this->_type);
         $this->_photoDir = Mage::getBaseDir('media') . DS .'pslogin'. DS .'photo';
 
         $this->_applicationId = trim(Mage::getStoreConfig('pslogin/'. $this->_type .'/application_id'));
@@ -132,6 +132,7 @@ class Plumrocket_SocialLogin_Model_Account extends Mage_Core_Model_Abstract
         try{
             $customer->setData($this->getUserData())
                 ->setConfirmation($this->getUserData('password'))
+                ->setPasswordConfirmation($this->getUserData('password'))
                 ->setData('is_active', 1)
                 ->getGroupId();
 
@@ -146,6 +147,11 @@ class Plumrocket_SocialLogin_Model_Account extends Mage_Core_Model_Abstract
 
             if( (empty($errors) || Mage::helper('pslogin')->validateIgnore()) && $correctEmail) {
                 $customerId = $customer->save()->getId();
+                // Set email confirmation;
+                // $customer->setConfirmation(null)->save();
+                $customer->setConfirmation(null)
+                    ->getResource()->saveAttribute($customer, 'confirmation');
+
             }
         } catch (Exception $e) {
             $errors[] = $e->getMessage();
@@ -196,22 +202,6 @@ class Plumrocket_SocialLogin_Model_Account extends Mage_Core_Model_Abstract
             return isset($this->_userData[$key]) ? $this->_userData[$key] : null;
         }
         return $this->_userData;
-    }
-
-    protected function _call($url, $params = null)
-    {
-        $result = null;
-        if(is_array($params) && $params) {
-            $url = $url .'?'. urldecode(http_build_query($params));
-        }elseif($params) {
-            $url = $url .'?'. urldecode($params);
-        }
-
-        try {
-            $result = file_get_contents($url);
-        } catch (Exception $e) {}
-        
-        return $result;
     }
 
     protected function _prepareData($data)
@@ -296,7 +286,7 @@ class Plumrocket_SocialLogin_Model_Account extends Mage_Core_Model_Abstract
 
         try{
             $io->mkdir($this->_photoDir);
-            if($file = file_get_contents($fileUrl)) {
+            if($file = $this->_loadFile($fileUrl)) {
                 if(file_put_contents($tmpPath, $file) > 0) {
                     
                     $image = new Varien_Image($tmpPath);
@@ -315,6 +305,44 @@ class Plumrocket_SocialLogin_Model_Account extends Mage_Core_Model_Abstract
         }
 
         return $upload;
+    }
+
+    protected function _loadFile($url, $count = 1) {
+
+        if ($count > 5) {
+            return false;
+        }
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_HEADER, true);
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $data = curl_exec($ch);
+        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+        curl_close($ch);
+
+        if (!$data) {
+            return false;
+        }
+
+        $dataArray = explode("\r\n\r\n", $data, 2);
+
+        if (count($dataArray) != 2) {
+            return false;
+        }
+
+        list($header, $body) = $dataArray;
+        if ($httpCode == 301 || $httpCode == 302) {
+            $matches = array();
+            preg_match('/Location:(.*?)\n/', $header, $matches);
+
+            if (isset($matches[1])) {
+                return $this->_loadFile(trim($matches[1]), $count++);
+            }
+        } else {
+            return $body;
+        }
     }
     
     public function postToMail()
@@ -371,6 +399,34 @@ class Plumrocket_SocialLogin_Model_Account extends Mage_Core_Model_Abstract
     public function _setLog($data, $append = false)
     {
         return;
+    }
+
+    protected function _call($url, $params = array(), $method = 'GET', $curlResource = null)
+    {
+        $result = null;
+        $paramsStr = is_array($params)? urlencode(http_build_query($params)) : urlencode($params);
+        if($paramsStr) {
+            $url .= '?'. urldecode($paramsStr);
+        }
+        
+        $curl = is_resource($curlResource)? $curlResource : curl_init();
+
+        if($method == 'POST') {
+            // POST.
+            curl_setopt($curl, CURLOPT_URL, $url);
+            curl_setopt($curl, CURLOPT_POST, 1);
+            curl_setopt($curl, CURLOPT_POSTFIELDS, $paramsStr);
+            curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+        }else{
+            // GET.
+            curl_setopt($curl, CURLOPT_URL, $url);
+        }
+
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        $result = curl_exec($curl);
+        curl_close($curl);
+
+        return $result;
     }
 
 }

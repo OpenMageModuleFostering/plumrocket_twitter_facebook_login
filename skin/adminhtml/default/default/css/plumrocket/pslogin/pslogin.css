@@ -112,7 +112,7 @@
 .pslogin-form ul li.hotmail .soc-li-icon { background-color: #f67d20; }
 .pslogin-form ul li.hotmail .soc-li-icon { background-position: 0px -16px; }
 
-.pslogin-form ul li.live .soc-li-icon { background-color: #f67d20; }
+.pslogin-form ul li.live .soc-li-icon { background-color: #0cb3ee; }
 .pslogin-form ul li.live .soc-li-icon { background-position: -17px -102px; }
 
 .pslogin-form ul li.pinterest .soc-li-icon { background-color: #cb2028; }
@@ -124,7 +124,7 @@
 .pslogin-form ul li.aol .soc-li-icon { background-color: #008bd3; }
 .pslogin-form ul li.aol .soc-li-icon { background-position: -51px -17px; }
 
-.pslogin-form ul li.github .soc-li-icon { background-color: #4382c5; }
+.pslogin-form ul li.github .soc-li-icon { background-color: black; }
 .pslogin-form ul li.github .soc-li-icon { background-position: -68px -17px; }
 
 .pslogin-form ul li.instagram .soc-li-icon { background-color: #9a6e51; }
@@ -181,8 +181,8 @@
 .pslogin-form ul li.hyves .soc-li-icon { background-color: #ffca63; }
 .pslogin-form ul li.hyves .soc-li-icon { background-position: -17px -69px; }
 
-.pslogin-form ul li.stackexchange .soc-li-icon { background-color: #557cbf; }
-.pslogin-form ul li.stackexchange .soc-li-icon { background-position: -34px -69px; }
+.pslogin-form ul li.stackoverflow .soc-li-icon { background-color: #f95500; }
+.pslogin-form ul li.stackoverflow .soc-li-icon { background-position: -34px -69px; }
 
 .pslogin-form ul li.evernote .soc-li-icon { background-color: #7ac141; }
 .pslogin-form ul li.evernote .soc-li-icon { background-position: -51px -69px; }
@@ -220,6 +220,31 @@
 .pslogin-form ul li.orange .soc-li-icon { background-color: #ff6600; }
 .pslogin-form ul li.orange .soc-li-icon { background-position: -0px -102px; }
 
+
+
+.pslogin-form ul li.bitbucket .soc-li-icon { background-color: #013567; }
+.pslogin-form ul li.bitbucket .soc-li-icon { background-position: -33px -102px; }
+
+.pslogin-form ul li.bitly .soc-li-icon { background-color: #ed6022; }
+.pslogin-form ul li.bitly .soc-li-icon { background-position: -50px -102px; }
+
+.pslogin-form ul li.boxcom .soc-li-icon { background-color: #00b9f2; }
+.pslogin-form ul li.boxcom .soc-li-icon { background-position: -67px -102px; }
+
+.pslogin-form ul li.vimeo .soc-li-icon { background-color: #1fb9eb; }
+.pslogin-form ul li.vimeo .soc-li-icon { background-position: -85px -102px; }
+
+.pslogin-form ul li.reddit .soc-li-icon { background-color: #337fb9; }
+.pslogin-form ul li.reddit .soc-li-icon { background-position: -102px -102px; }
+
+.pslogin-form ul li.odesc .soc-li-icon { background-color: #7ac043; }
+.pslogin-form ul li.odesc .soc-li-icon { background-position: -1px -119px; }
+
+.pslogin-form ul li.teamviewer .soc-li-icon { background-color: #0171b9; }
+.pslogin-form ul li.teamviewer .soc-li-icon { background-position: -17px -119px; }
+
+.pslogin-form ul li.skyrock .soc-li-icon { background-color: #009afe; }
+.pslogin-form ul li.skyrock .soc-li-icon { background-position: -34px -119px; }
 
 .entry-edit-head.pslogin-notinstalled-section {
 	background: #BDBDBD;

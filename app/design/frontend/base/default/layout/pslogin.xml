@@ -4,7 +4,8 @@
     <default>
         <reference name="head">
             <action ifconfig="pslogin/general/enable" method="addCss"><stylesheet>css/plumrocket/pslogin/pslogin.css</stylesheet></action>
-            <action ifconfig="pslogin/general/enable" method="addItem"><type>skin_js</type><name>js/plumrocket/jquery-1.10.2.min.js</name></action>
+            <action ifconfig="pslogin/general/enable" method="addCss"><stylesheet>css/plumrocket/pslogin/pslogin-custom.css</stylesheet></action>
+            <action ifconfig="pslogin/general/enable" method="addItem"><type>skin_js</type><name>js/plumrocket/pslogin/jquery-1.10.2.min.js</name></action>
             <action ifconfig="pslogin/general/enable" method="addItem"><type>skin_js</type><name>js/plumrocket/pslogin/pslogin.js</name></action>
         </reference>
         <reference name="after_body_start">
@@ -14,10 +15,22 @@
         <reference name="popuplogin_form_login">
             <block type="pslogin/buttons" name="pslogin.customer.form.login.buttons" as="pslogin_buttons" template="pslogin/customer/form/login/buttons.phtml" />
         </reference>
+        <reference name="popup.login">
+            <block type="pslogin/buttons" name="pslogin.customer.form.login.buttons" as="pslogin_buttons" template="pslogin/customer/form/login/buttons.phtml" />
+        </reference>
         <reference name="popuplogin_form_register">
             <block type="pslogin/buttons" name="pslogin.customer.form.register.buttons" as="pslogin_buttons" template="pslogin/customer/form/register/buttons.phtml" />
         </reference>
     </default>
+
+    <cms_index_index>
+        <reference name="popuplogin_form_login">
+            <block type="pslogin/buttons" name="pslogin.customer.form.login.buttons" as="pslogin_buttons" template="pslogin/customer/form/login/buttons.phtml" />
+        </reference>
+        <reference name="popuplogin_form_register">
+            <block type="pslogin/buttons" name="pslogin.customer.form.register.buttons" as="pslogin_buttons" template="pslogin/customer/form/register/buttons.phtml" />
+        </reference>
+    </cms_index_index>
 
     <customer_account_login translate="label">
         <reference name="customer_form_login">
