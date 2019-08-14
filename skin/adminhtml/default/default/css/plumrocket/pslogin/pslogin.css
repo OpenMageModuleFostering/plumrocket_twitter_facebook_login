@@ -220,8 +220,6 @@
 .pslogin-form ul li.orange .soc-li-icon { background-color: #ff6600; }
 .pslogin-form ul li.orange .soc-li-icon { background-position: -0px -102px; }
 
-
-
 .pslogin-form ul li.bitbucket .soc-li-icon { background-color: #013567; }
 .pslogin-form ul li.bitbucket .soc-li-icon { background-position: -33px -102px; }
 
@@ -249,7 +247,6 @@
 .pslogin-form ul li.renren .soc-li-icon { background-color: #153765; }
 .pslogin-form ul li.renren .soc-li-icon { background-position: -51px -119px; }
 
-
 .pslogin-form ul li.etsy .soc-li-icon { background-color: #ee5931; }
 .pslogin-form ul li.etsy .soc-li-icon { background-position: -68px -119px; }
 
@@ -273,6 +270,14 @@
  
 .pslogin-form ul li.lastfm .soc-li-icon { background-color: #c02c0c; }
 .pslogin-form ul li.lastfm .soc-li-icon { background-position: -68px -136px; }
+
+.pslogin-form ul li.alipay .soc-li-icon { background-color: #00a0e9; }
+.pslogin-form ul li.alipay .soc-li-icon { background-position: -101px -136px; }
+
+.pslogin-form ul li.wechat .soc-li-icon { background-color: #4ec034; }
+.pslogin-form ul li.wechat .soc-li-icon { background-position: -1px -153px; }
+
+
 
 .entry-edit-head.pslogin-notinstalled-section {
 	background: #BDBDBD;

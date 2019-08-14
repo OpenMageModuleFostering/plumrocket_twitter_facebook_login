@@ -46,7 +46,7 @@ class Plumrocket_SocialLogin_Block_Page_Html_Header extends Mage_Page_Block_Html
         }
         return $this->getSkinUrl($this->_data['logo_src_rwd_small']);
     }
-    
+
     public function getWelcome()
     {
     	$this->setTemplate('pslogin/page/html/welcome.phtml');

@@ -210,7 +210,9 @@ class Plumrocket_SocialLogin_AccountController extends Mage_Core_Controller_Fron
             }
 
             // Loged in.
-            $session->loginById($customerId);
+            if ($session->loginById($customerId)) {
+                $session->renewSession();
+            }
 
             // Unset referer link.
             $this->_getHelper()->refererLink(null);
@@ -222,13 +224,17 @@ class Plumrocket_SocialLogin_AccountController extends Mage_Core_Controller_Fron
                 'redirectUrl' => $redirectUrl
             )));
         }else{
-            $this->getResponse()->setBody('<script type="text/javascript">if(window.opener && window.opener.location &&  !window.opener.closed) { window.close(); window.opener.location.href = "'.$redirectUrl.'"; }else{ window.location.href = "'.$redirectUrl.'"; }</script>');
+            $this->getResponse()->setBody($this->_jsWrap('if(window.opener && window.opener.location &&  !window.opener.closed) { window.close(); window.opener.location.href = "'.$redirectUrl.'"; }else{ window.location.href = "'.$redirectUrl.'"; }'));
+
+            Mage::dispatchEvent('prsociallogin_login_success',
+                array('account_controller' => $this, 'redirectUrl' => $redirectUrl)
+            );
         }
     }
 
     public function runjsAction()
     {
-        $this->getResponse()->setBody('<script type="text/javascript">'. $this->getRequest()->getPost('js') .'</script>');
+        $this->getResponse()->setBody($this->_jsWrap($this->getRequest()->getPost('js')));
     }
 
     protected function _windowClose()
@@ -239,10 +245,15 @@ class Plumrocket_SocialLogin_AccountController extends Mage_Core_Controller_Fron
                 'windowClose' => true
             )));
         }else{
-            $this->getResponse()->setBody('<script type="text/javascript">window.close();</script>');
+            $this->getResponse()->setBody($this->_jsWrap('window.close();'));
         }
         // $this->getResponse()->setBody('<script type="text/javascript">if(window.name == "pslogin_popup") { window.close(); }</script>');
         return true;
+    }
+
+    protected function _jsWrap($js)
+    {
+        return '<html><head></head><body><script type="text/javascript">'.$js.'</script></body></html>';
     }
 
     protected function _dispatchRegisterSuccess($customer)

@@ -27,7 +27,7 @@ class Plumrocket_SocialLogin_Helper_Data extends Plumrocket_SocialLogin_Helper_M
 	const DEBUG_MODE = false;
 
 	protected $_buttons = null;
-    protected $_buttonsPrepared = null;
+	protected $_buttonsPrepared = null;
 
 	public function moduleEnabled()
 	{
@@ -91,34 +91,38 @@ class Plumrocket_SocialLogin_Helper_Data extends Plumrocket_SocialLogin_Helper_M
 		}
 
 		if(Mage::getSingleton('customer/session')->isLoggedIn()) {
-            return false;
-        }
+			return false;
+		}
 
 		return (bool)$this->getButtons();
 	}
 
-	public function getPhotoPath($checkIsEnabled = true)
+	public function getPhotoPath($checkIsEnabled = true, $customerId = null)
 	{
 		if($checkIsEnabled && !$this->photoEnabled()) {
 			return false;
 		}
 
-		if(!Mage::getSingleton('customer/session')->isLoggedIn()) {
-            return false;
-        }
+		if ($customerId === null) {
+			if(!Mage::getSingleton('customer/session')->isLoggedIn()) {
+				return false;
+			}
 
-		if(!$customerId = Mage::getSingleton('customer/session')->getCustomerId()) {
-            return false;
-        }
+			if(!$customerId = Mage::getSingleton('customer/session')->getCustomerId()) {
+				return false;
+			}
+		} else if (!is_numeric($customerId) || $customerId <= 0) {
+			return false;
+		}
 
-        $path = Mage::getBaseDir(Mage_Core_Model_Store::URL_TYPE_MEDIA) . DS .'pslogin'. DS .'photo'. DS . $customerId .'.'. Plumrocket_SocialLogin_Model_Account::PHOTO_FILE_EXT;
-        $pathUrl = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) .'pslogin/photo/' . $customerId .'.'. Plumrocket_SocialLogin_Model_Account::PHOTO_FILE_EXT;
+		$path = Mage::getBaseDir(Mage_Core_Model_Store::URL_TYPE_MEDIA) . DS .'pslogin'. DS .'photo'. DS . $customerId .'.'. Plumrocket_SocialLogin_Model_Account::PHOTO_FILE_EXT;
+		$pathUrl = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) .'pslogin/photo/' . $customerId .'.'. Plumrocket_SocialLogin_Model_Account::PHOTO_FILE_EXT;
 
-        if(!file_exists($path)) {
-            return false;
-        }
+		if(!file_exists($path)) {
+			return false;
+		}
 
-        return $pathUrl;
+		return $pathUrl;
 	}
 
 	public function isGlobalScope()
@@ -143,43 +147,43 @@ class Plumrocket_SocialLogin_Helper_Data extends Plumrocket_SocialLogin_Helper_M
 		$websiteCode = $request->getParam('website');
 
 		$defaultStoreId = Mage::app()
-            ->getWebsite( $byRequest? $websiteCode : null )
-            ->getDefaultGroup()
-            ->getDefaultStoreId();
+			->getWebsite( $byRequest? $websiteCode : null )
+			->getDefaultGroup()
+			->getDefaultStoreId();
 
-        if(!$defaultStoreId) {
-        	$websites = Mage::app()->getWebsites(true);
-        	foreach($websites as $website) {
-        		$defaultStoreId = $website
-		            ->getDefaultGroup()
-		            ->getDefaultStoreId();
-		        
-		        if ($defaultStoreId) {
-		        	break;
-		        }
-        	}
-        }
+		if(!$defaultStoreId) {
+			$websites = Mage::app()->getWebsites(true);
+			foreach($websites as $website) {
+				$defaultStoreId = $website
+					->getDefaultGroup()
+					->getDefaultStoreId();
+				
+				if ($defaultStoreId) {
+					break;
+				}
+			}
+		}
 
-        if(!$defaultStoreId) {
-        	$defaultStoreId = 1;
-        }
+		if(!$defaultStoreId) {
+			$defaultStoreId = 1;
+		}
 
-        $url = Mage::app()->getStore($defaultStoreId)->getUrl('pslogin/account/login', array('type' => $provider, '_nosid' => true));
+		$url = Mage::app()->getStore($defaultStoreId)->getUrl('pslogin/account/login', array('type' => $provider, '_nosid' => true));
 
-        if(false !== ($length = stripos($url, '?'))) {
-        	$url = substr($url, 0, $length);
-        }
+		if(false !== ($length = stripos($url, '?'))) {
+			$url = substr($url, 0, $length);
+		}
 
-        if($byRequest) {
-        	/*if(Mage::getStoreConfig('web/url/use_store')) {
-        		// $url = str_replace('admin/', '', $url);
-        	}*/
-        	if(Mage::getStoreConfig('web/seo/use_rewrites')) {
-        		$url = str_replace('index.php/', '', $url);
-        	}
-        }
-        
-        return $url;
+		if($byRequest) {
+			/*if(Mage::getStoreConfig('web/url/use_store')) {
+				// $url = str_replace('admin/', '', $url);
+			}*/
+			if(Mage::getStoreConfig('web/seo/use_rewrites')) {
+				$url = str_replace('index.php/', '', $url);
+			}
+		}
+		
+		return $url;
 	}
 
 	public function getTypes($onlyEnabled = true)
@@ -202,71 +206,71 @@ class Plumrocket_SocialLogin_Helper_Data extends Plumrocket_SocialLogin_Helper_M
 	}
 
 	public function getButtons()
-    {
-        if (is_null($this->_buttons)) {
-            $types = $this->getTypes();
-            
-            $this->_buttons = array();
-            foreach ($types as $type) {
-                $type = Mage::getSingleton("pslogin/$type");
-                if($type->enabled()) {
-                    $button = $type->getButton();
-                    $this->_buttons[ $button['type'] ] = $button;
-                }
-            }
-        }
-        return $this->_buttons;
-    }
+	{
+		if (is_null($this->_buttons)) {
+			$types = $this->getTypes();
+			
+			$this->_buttons = array();
+			foreach ($types as $type) {
+				$type = Mage::getSingleton("pslogin/$type");
+				if($type->enabled()) {
+					$button = $type->getButton();
+					$this->_buttons[ $button['type'] ] = $button;
+				}
+			}
+		}
+		return $this->_buttons;
+	}
 
-    public function getPreparedButtons($part = null)
-    {
-        if(is_null($this->_buttonsPrepared)) {
-            $this->_buttonsPrepared = array(
-                'visible' => array(),
-                'hidden' => array()
-            );
-            $buttons = $this->getButtons();
+	public function getPreparedButtons($part = null)
+	{
+		if(is_null($this->_buttonsPrepared)) {
+			$this->_buttonsPrepared = array(
+				'visible' => array(),
+				'hidden' => array()
+			);
+			$buttons = $this->getButtons();
 
-            $storeName = Mage::app()->getRequest()->getParam('store');
-            $sortableString = Mage::getStoreConfig('pslogin/general/sortable', $storeName);
-            $sortable = null;
-            parse_str($sortableString, $sortable);
+			$storeName = Mage::app()->getRequest()->getParam('store');
+			$sortableString = Mage::getStoreConfig('pslogin/general/sortable', $storeName);
+			$sortable = null;
+			parse_str($sortableString, $sortable);
 
-            if(is_array($sortable)) {
-                foreach ($sortable as $partName => $partButtons) {
-                    foreach ($partButtons as $button) {
-                        if(isset($buttons[$button])) {
-                            $this->_buttonsPrepared[$partName][] = $buttons[$button];
-                            unset($buttons[$button]);
-                        }
-                    }
-                }
+			if(is_array($sortable)) {
+				foreach ($sortable as $partName => $partButtons) {
+					foreach ($partButtons as $button) {
+						if(isset($buttons[$button])) {
+							$this->_buttonsPrepared[$partName][] = $buttons[$button];
+							unset($buttons[$button]);
+						}
+					}
+				}
 
-                // If has not sortabled enabled buttons.
-                if(!empty($buttons)) {
-                    if(empty($this->_buttonsPrepared['visible'])) {
-                        $this->_buttonsPrepared['visible'] = array();
-                    }
-                    $this->_buttonsPrepared['visible'] = array_merge($this->_buttonsPrepared['visible'], $buttons);
-                }
+				// If has not sortabled enabled buttons.
+				if(!empty($buttons)) {
+					if(empty($this->_buttonsPrepared['visible'])) {
+						$this->_buttonsPrepared['visible'] = array();
+					}
+					$this->_buttonsPrepared['visible'] = array_merge($this->_buttonsPrepared['visible'], $buttons);
+				}
 
-                // If visible list is empty.
-                if(empty($this->_buttonsPrepared['visible'])) {
-                    $this->_buttonsPrepared['visible'] = $this->_buttonsPrepared['hidden'];
-                    $this->_buttonsPrepared['hidden'] = array();
-                }
+				// If visible list is empty.
+				if(empty($this->_buttonsPrepared['visible'])) {
+					$this->_buttonsPrepared['visible'] = $this->_buttonsPrepared['hidden'];
+					$this->_buttonsPrepared['hidden'] = array();
+				}
 
-                // Set visible.
-                foreach($this->_buttonsPrepared['visible'] as &$btn) {
-                    $btn['visible'] = true;
-                }
-            }
-        }
+				// Set visible.
+				foreach($this->_buttonsPrepared['visible'] as &$btn) {
+					$btn['visible'] = true;
+				}
+			}
+		}
 
-        return isset($this->_buttonsPrepared[$part]) ?
-                $this->_buttonsPrepared[$part] :
-                array_merge($this->_buttonsPrepared['visible'], $this->_buttonsPrepared['hidden']);
-    }
+		return isset($this->_buttonsPrepared[$part]) ?
+				$this->_buttonsPrepared[$part] :
+				array_merge($this->_buttonsPrepared['visible'], $this->_buttonsPrepared['hidden']);
+	}
 
 	public function refererLink($value = false)
 	{
@@ -352,65 +356,65 @@ class Plumrocket_SocialLogin_Helper_Data extends Plumrocket_SocialLogin_Helper_M
 	}
 
 	public function getRedirectUrl($after = 'login')
-    {
-        $redirectUrl = null;
-        $redirect = $this->getRedirect();
-        switch($redirect[$after]) {
+	{
+		$redirectUrl = null;
+		$redirect = $this->getRedirect();
+		switch($redirect[$after]) {
 
-            case '__referer__':
-                if(!$referer = Mage::app()->getRequest()->getParam(self::REFERER_QUERY_PARAM_NAME)) {
-                    $referer = $this->refererLink();
-                }
+			case '__referer__':
+				if(!$referer = Mage::app()->getRequest()->getParam(self::REFERER_QUERY_PARAM_NAME)) {
+					$referer = $this->refererLink();
+				}
 
-                if ($referer) {
-                    // Rebuild referer URL to handle the case when SID was changed
-                    $referer = Mage::getSingleton('core/url')
-                        ->getRebuiltUrl( Mage::helper('core')->urlDecode($referer));
+				if ($referer) {
+					// Rebuild referer URL to handle the case when SID was changed
+					$referer = Mage::getSingleton('core/url')
+						->getRebuiltUrl( Mage::helper('core')->urlDecode($referer));
 
-                    // Remove params, like SID.
-                    // $referer = preg_replace('#SID=[[:alnum:]]+#', '', $referer);
+					// Remove params, like SID.
+					// $referer = preg_replace('#SID=[[:alnum:]]+#', '', $referer);
 					$referer = strtok($referer, '?');
 
-                    if ($this->isUrlInternal($referer)) {
-	                    $redirectUrl = $referer;
-	                }
-                }else{
-                    $redirectUrl = Mage::helper('customer')->getDashboardUrl();
-                }
-                break;
+					if ($this->isUrlInternal($referer)) {
+						$redirectUrl = $referer;
+					}
+				}else{
+					$redirectUrl = Mage::helper('customer')->getDashboardUrl();
+				}
+				break;
 
-            case '__custom__':
-                $redirectUrl = $redirect["{$after}_link"];
-                if (!$this->isUrlInternal($redirectUrl)) {
-                    $redirectUrl = Mage::getBaseUrl() . $redirectUrl;
-                }
-                break;
+			case '__custom__':
+				$redirectUrl = $redirect["{$after}_link"];
+				if (!$this->isUrlInternal($redirectUrl)) {
+					$redirectUrl = Mage::getBaseUrl() . $redirectUrl;
+				}
+				break;
 
-            case '__dashboard__':
-                $redirectUrl = Mage::helper('customer')->getDashboardUrl();
-                break;
+			case '__dashboard__':
+				$redirectUrl = Mage::helper('customer')->getDashboardUrl();
+				break;
 
-            default:
-                if(is_numeric($redirect[$after])) {
-                    $redirectUrl = Mage::helper('cms/page')->getPageUrl($redirect[$after]);
-                }
-        }
+			default:
+				if(is_numeric($redirect[$after])) {
+					$redirectUrl = Mage::helper('cms/page')->getPageUrl($redirect[$after]);
+				}
+		}
 
-        return $redirectUrl;
-    }
+		return $redirectUrl;
+	}
 
-    public function isUrlInternal($url)
-    {
-    	return (stripos($url, 'http') === 0); 
-        /*if (strpos($url, 'http') !== false) {
-            if ((strpos($url, Mage::app()->getStore()->getBaseUrl()) === 0)
-                || (strpos($url, Mage::app()->getStore()->getBaseUrl(Mage_Core_Model_Store::URL_TYPE_LINK, true)) === 0)
-            ) {
-                return true;
-            }
-        }
-        return false;*/
-    }
+	public function isUrlInternal($url)
+	{
+		return (stripos($url, 'http') === 0); 
+		/*if (strpos($url, 'http') !== false) {
+			if ((strpos($url, Mage::app()->getStore()->getBaseUrl()) === 0)
+				|| (strpos($url, Mage::app()->getStore()->getBaseUrl(Mage_Core_Model_Store::URL_TYPE_LINK, true)) === 0)
+			) {
+				return true;
+			}
+		}
+		return false;*/
+	}
 
 	public function moduleInvitationsEnabled()
 	{

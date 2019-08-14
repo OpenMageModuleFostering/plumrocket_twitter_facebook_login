@@ -94,7 +94,7 @@ class Plumrocket_SocialLogin_Model_Account extends Mage_Core_Model_Abstract
 
             $customerId = $collection->getFirstItem()->getData('customer_id');
         }
-        
+
         return $customerId;
     }
 
@@ -131,7 +131,7 @@ class Plumrocket_SocialLogin_Model_Account extends Mage_Core_Model_Abstract
         $customerId = 0;
         $errors = array();
         $customer = Mage::getSingleton('customer/customer')->setId(null);
-        
+
         try{
             $customer->setData($this->getUserData())
                 ->setConfirmation($this->getUserData('password'))
@@ -139,7 +139,7 @@ class Plumrocket_SocialLogin_Model_Account extends Mage_Core_Model_Abstract
                 ->setData('is_active', 1)
                 ->getGroupId();
 
-            if(!Mage::helper('pslogin')->isFakeMail( $this->getUserData('email') )) {
+            if(!Mage::helper('pslogin')->isFakeMail($this->getUserData('email')) && Mage::getStoreConfig('pslogin/general/enable_subscription')) {
                 $customer->setIsSubscribed(1);
             }
 
@@ -169,7 +169,7 @@ class Plumrocket_SocialLogin_Model_Account extends Mage_Core_Model_Abstract
     protected function _validateErrors($customer)
     {
         $errors = array();
-        
+
         // Date of birth.
         $entityType = Mage::getSingleton('eav/config')->getEntityType('customer');
         $attribute = Mage::getModel('customer/attribute')->loadByCode($entityType, 'dob');
@@ -292,7 +292,7 @@ class Plumrocket_SocialLogin_Model_Account extends Mage_Core_Model_Abstract
             $io->mkdir($this->_photoDir);
             if($file = $this->_loadFile($fileUrl)) {
                 if(file_put_contents($tmpPath, $file) > 0) {
-                    
+
                     $image = new Varien_Image($tmpPath);
                     $image->resize($this->_photoSize);
 
@@ -349,7 +349,7 @@ class Plumrocket_SocialLogin_Model_Account extends Mage_Core_Model_Abstract
             return $body;
         }
     }
-    
+
     public function postToMail()
     {
         if(!Mage::helper('pslogin')->isFakeMail( $this->getUserData('email') )) {
@@ -433,7 +433,7 @@ class Plumrocket_SocialLogin_Model_Account extends Mage_Core_Model_Abstract
         if($paramsStr) {
             $url .= '?'. urldecode($paramsStr);
         }
-        
+
         $curl = is_resource($curlResource)? $curlResource : curl_init();
 
         if($method == 'POST') {
