@@ -16,18 +16,11 @@
  */
 
 
-class Plumrocket_SocialLogin_Block_System_Config_Version extends Mage_Adminhtml_Block_System_Config_Form_Field
+class Plumrocket_SocialLogin_Block_System_Config_Version extends Plumrocket_Base_Block_System_Config_Version
 {
     public function render(Varien_Data_Form_Element_Abstract $element)
     {
-        $moduleNode     = Mage::getConfig()->getNode('modules/Plumrocket_SocialLogin');
-        $name           = $moduleNode->name;
-        $version        = $moduleNode->version;
-        $wiki           = $moduleNode->wiki;
-
-        return $this->_includeJs() . '<div style="padding:10px;background-color:#fff;border:1px solid #ddd;margin-bottom:7px;">
-            '. sprintf('Plumrocket %s v%s was developed by <a href="http://www.plumrocket.com" target="_blank">Plumrocket Inc</a>. For manual &amp; video tutorials please refer to <a href="%s" target="_blank">our online documentation</a>.', $name, $version, $wiki) .'
-		</div>';
+        return $this->_includeJs() . parent::render($element);
     }
 
     protected function _includeJs()

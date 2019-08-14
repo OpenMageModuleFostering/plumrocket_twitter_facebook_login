@@ -21,6 +21,11 @@ class Plumrocket_SocialLogin_Model_Observer
 
     public function controllerActionPredispatch()
     {
+        $helper = Mage::helper('pslogin');
+        if(!$helper->moduleEnabled()) {
+            return;
+        }
+
         // Check email.
         $request = Mage::app()->getRequest();
         $requestString = $request->getRequestString();
@@ -39,16 +44,16 @@ class Plumrocket_SocialLogin_Model_Observer
             // case $moduleName = (stripos($module, 'checkout') !== false && stripos($controller, 'onepage') !== false && stripos($action, 'index') !== false) ? 'checkout' : null:
 
                 $session = Mage::getSingleton('customer/session');
-                if($session->isLoggedIn() && Mage::helper('pslogin')->isFakeMail()) {
+                if($session->isLoggedIn() && $helper->isFakeMail()) {
                     
                     $session->getMessages()->deleteMessageByIdentifier('fakeemail');
-                    $message = Mage::helper('pslogin')->__('Your account needs to be updated. The email address in your profile is invalid. Please indicate your valid email address by going to the <a href="%s">Account edit page</a>', Mage::getUrl($editUri));
+                    $message = $helper->__('Your account needs to be updated. The email address in your profile is invalid. Please indicate your valid email address by going to the <a href="%s">Account edit page</a>', Mage::getUrl($editUri));
 
                     switch($moduleName) {
                         case 'customer':
                             if(stripos($requestString, $editUri) !== false) {
                                 // Set new message and red field.
-                                $message = Mage::helper('pslogin')->__('Your account needs to be updated. The email address in your profile is invalid. Please indicate your valid email address.');
+                                $message = $helper->__('Your account needs to be updated. The email address in your profile is invalid. Please indicate your valid email address.');
                             }
                             $session->addUniqueMessages(Mage::getSingleton('core/message')->notice($message)->setIdentifier('fakeemail'));
                             break;
@@ -65,14 +70,23 @@ class Plumrocket_SocialLogin_Model_Observer
 
     public function customerLogin($observer)
     {
+        $helper = Mage::helper('pslogin');
+        if(!$helper->moduleEnabled()) {
+            return;
+        }
+
         // Set redirect url.
-        $redirectUrl = Mage::helper('pslogin')->getRedirectUrl('login');
+        $redirectUrl = $helper->getRedirectUrl('login');
         Mage::getSingleton('customer/session')->setBeforeAuthUrl($redirectUrl);
     }
 
     public function customerRegisterSuccess($observer)
     {
         $helper = Mage::helper('pslogin');
+        if(!$helper->moduleEnabled()) {
+            return;
+        }
+
         $data = Mage::getSingleton('customer/session')->getData('pslogin');
         
         if(!empty($data['provider']) && !empty($data['timeout']) && $data['timeout'] > time()) {
@@ -103,11 +117,6 @@ class Plumrocket_SocialLogin_Model_Observer
         // Set redirect url.
         $redirectUrl = $helper->getRedirectUrl('register');
         Mage::app()->getRequest()->setParam(Mage_Core_Controller_Varien_Action::PARAM_NAME_SUCCESS_URL, $redirectUrl);
-    }
-
-    public function httpResponseSendBefore($observer)
-    {
-        
     }
 
     public function customerLogout()

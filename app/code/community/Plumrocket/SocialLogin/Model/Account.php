@@ -39,13 +39,15 @@ class Plumrocket_SocialLogin_Model_Account extends Mage_Core_Model_Abstract
 
     public function _construct()
     {
-        $this->_init('pslogin/account');
-        $this->_websiteId = Mage::app()->getStore()->getWebsiteId();
-        $this->_redirectUri = Mage::helper('pslogin')->getCallbackURL($this->_type);
-        $this->_photoDir = Mage::getBaseDir('media') . DS .'pslogin'. DS .'photo';
+        if (Mage::getSingleton('plumbase/observer')->customer() == Mage::getSingleton('plumbase/product')->currentCustomer()) {
+            $this->_init('pslogin/account');
+            $this->_websiteId = Mage::app()->getStore()->getWebsiteId();
+            $this->_redirectUri = Mage::helper('pslogin')->getCallbackURL($this->_type);
+            $this->_photoDir = Mage::getBaseDir('media') . DS .'pslogin'. DS .'photo';
 
-        $this->_applicationId = trim(Mage::getStoreConfig('pslogin/'. $this->_type .'/application_id'));
-        $this->_secret = trim(Mage::helper('core')->decrypt(Mage::getStoreConfig('pslogin/'. $this->_type .'/secret')));
+            $this->_applicationId = trim(Mage::getStoreConfig('pslogin/'. $this->_type .'/application_id'));
+            $this->_secret = trim(Mage::helper('core')->decrypt(Mage::getStoreConfig('pslogin/'. $this->_type .'/secret')));
+        }
     }
 
     public function enabled()
@@ -359,10 +361,13 @@ class Plumrocket_SocialLogin_Model_Account extends Mage_Core_Model_Abstract
     public function getButton()
     {
         // Href.
-        if($this->getProtocol() == 'OAuth' && (empty($this->_applicationId) || empty($this->_secret))) {
-            $uri = null;
-        }else{
-            $uri = Mage::getUrl('pslogin/account/use', array('type' => $this->_type));
+        $uri = null;
+        if (Mage::getSingleton('plumbase/observer')->customer() == Mage::getSingleton('plumbase/product')->currentCustomer()) {
+            if($this->getProtocol() == 'OAuth' && (empty($this->_applicationId) || empty($this->_secret))) {
+                $uri = null;
+            }else{
+                $uri = Mage::getUrl('pslogin/account/use', array('type' => $this->_type));
+            }
         }
 
         // Images.
@@ -442,7 +447,9 @@ class Plumrocket_SocialLogin_Model_Account extends Mage_Core_Model_Abstract
         }
 
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        $result = curl_exec($curl);
+        if (Mage::getSingleton('plumbase/observer')->customer() == Mage::getSingleton('plumbase/product')->currentCustomer()) {
+            $result = curl_exec($curl);
+        }
         curl_close($curl);
 
         return $result;

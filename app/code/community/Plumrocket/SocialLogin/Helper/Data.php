@@ -16,7 +16,7 @@
  */
 
 
-class Plumrocket_SocialLogin_Helper_Data extends Mage_Core_Helper_Abstract
+class Plumrocket_SocialLogin_Helper_Data extends Plumrocket_SocialLogin_Helper_Main
 {
 	const REFERER_QUERY_PARAM_NAME = 'pslogin_referer';
 	const REFERER_STORE_PARAM_NAME = 'pslogin_referer_store';
