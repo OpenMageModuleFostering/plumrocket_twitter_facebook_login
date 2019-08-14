@@ -22,7 +22,7 @@ class Plumrocket_SocialLogin_AccountController extends Mage_Core_Controller_Fron
     public function useAction()
     {
         $session = $this->_getSession();
-        if ($session->isLoggedIn()) {
+        if ($session->isLoggedIn() && !$this->getRequest()->getParam('call')) {
             return $this->_windowClose();
         }
 
@@ -37,7 +37,15 @@ class Plumrocket_SocialLogin_AccountController extends Mage_Core_Controller_Fron
             return $this->_windowClose();
         }
         
-        $link = null;
+        if($call = $this->getRequest()->getParam('call')) {
+            $this->_getHelper()->apiCall(array(
+                'type'      => $type,
+                'action'    => $call,
+            ));
+        }else{
+            $this->_getHelper()->apiCall(null);
+        }
+
         switch($model->getProtocol()) {
 
             case 'OAuth':
@@ -59,12 +67,27 @@ class Plumrocket_SocialLogin_AccountController extends Mage_Core_Controller_Fron
     public function loginAction()
     {
         $session = $this->_getSession();
-        if ($session->isLoggedIn()) {
+        $type = $this->getRequest()->getParam('type');
+
+        // API.
+        $callTarget = false;
+        if($call = $this->_getHelper()->apiCall()) {
+            if(isset($call['type']) && $call['type'] == $type && !empty($call['action'])) {
+                $_target = explode('.', $call['action'], 3);
+                if(count($_target) === 3) {
+                    $callTarget = $_target;
+                }else{
+                    $this->_windowClose();
+                    return;
+                }
+            }
+        }
+
+        if ($session->isLoggedIn() && !$callTarget) {
             return $this->_windowClose();
             // $this->_redirect('.');
         }
 
-        $type = $this->getRequest()->getParam('type');
         $className = 'Plumrocket_SocialLogin_Model_'. ucfirst($type);
         if(!$type || !class_exists($className)) {
             return $this->_windowClose();
@@ -96,6 +119,13 @@ class Plumrocket_SocialLogin_AccountController extends Mage_Core_Controller_Fron
         // Switch store.
         if($storeId = Mage::helper('pslogin')->refererStore()) {
             Mage::app()->setCurrentStore($storeId);
+        }
+
+        // API.
+        if($callTarget) {
+            list($module, $controller, $action) = $callTarget;
+            $this->_forward($action, $controller, $module, array('pslogin' => $model->getUserData()));
+            return;
         }
 
         if($customerId = $model->getCustomerIdByUserId()) {

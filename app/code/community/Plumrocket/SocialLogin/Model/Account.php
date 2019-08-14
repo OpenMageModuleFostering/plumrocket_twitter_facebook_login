@@ -353,7 +353,7 @@ class Plumrocket_SocialLogin_Model_Account extends Mage_Core_Model_Abstract
     public function postToMail()
     {
         if(!Mage::helper('pslogin')->isFakeMail( $this->getUserData('email') )) {
-            Mage::getSingleton('customer/customer')->sendNewAccountEmail();
+            Mage::getSingleton('customer/customer')->sendNewAccountEmail('registered', '', Mage::app()->getStore()->getId());
         }
 
         return true;

@@ -909,7 +909,7 @@
                 </mydigipass>
 
                 <qq>
-                    <label>QQ</label>
+                    <label>QQ / QZone</label>
                     <sort_order>320</sort_order>
                     <frontend_type>text</frontend_type>
                     <show_in_default>1</show_in_default>

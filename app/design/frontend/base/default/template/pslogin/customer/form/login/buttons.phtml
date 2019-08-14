@@ -27,7 +27,7 @@
             <ul class="pslogin-clearfix">
             <?php foreach ($this->getPreparedButtons() as $button) : ?>
                 <li class="pslogin-button <?php echo $button['type']; ?> <?php echo empty($button['visible'])? 'pslogin-hidden' : 'pslogin-visible'; ?>" <?php echo empty($button['visible'])? 'style="display: none;"' : ''; ?> title="<?php echo $this->escapeHtml($button['login_text']); ?>">
-                    <a class="pslogin-button-link" rel="nofollow" href="<?php echo $button['href']; ?>" data-width="<?php echo $button['popup_width']; ?>" data-height="<?php echo $button['popup_height']; ?>" data-loader="<?php echo $this->getLoaderUrl(); ?>">
+                    <a class="pslogin-button-link" rel="nofollow" href="javascript:void(0);" onclick="psLogin('<?php echo $button['href']; ?>', '<?php echo $button['popup_width']; ?>', '<?php echo $button['popup_height']; ?>');" >
 
                         <?php if($this->showLoginFullButtons() && !empty($button['image']['login'])) : ?>
                             <img class="pslogin-button-image" src="<?php echo $this->escapeHtml($button['image']['login']); ?>" />

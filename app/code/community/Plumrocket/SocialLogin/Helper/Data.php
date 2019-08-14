@@ -21,6 +21,7 @@ class Plumrocket_SocialLogin_Helper_Data extends Plumrocket_SocialLogin_Helper_M
 	const REFERER_QUERY_PARAM_NAME = 'pslogin_referer';
 	const REFERER_STORE_PARAM_NAME = 'pslogin_referer_store';
 	const SHOW_POPUP_PARAM_NAME = 'pslogin_show_popup';
+	const API_CALL_PARAM_NAME = 'pslogin_api_call';
 	const FAKE_EMAIL_PREFIX = 'temp-email-ps';
 	const TIME_TO_EDIT = 300;
 	const DEBUG_MODE = false;
@@ -89,7 +90,7 @@ class Plumrocket_SocialLogin_Helper_Data extends Plumrocket_SocialLogin_Helper_M
 			return false;
 		}
 
-		if($customerId = Mage::getSingleton('customer/session')->getCustomerId()) {
+		if(Mage::getSingleton('customer/session')->isLoggedIn()) {
             return false;
         }
 
@@ -101,6 +102,10 @@ class Plumrocket_SocialLogin_Helper_Data extends Plumrocket_SocialLogin_Helper_M
 		if($checkIsEnabled && !$this->photoEnabled()) {
 			return false;
 		}
+
+		if(!Mage::getSingleton('customer/session')->isLoggedIn()) {
+            return false;
+        }
 
 		if(!$customerId = Mage::getSingleton('customer/session')->getCustomerId()) {
             return false;
@@ -323,6 +328,20 @@ class Plumrocket_SocialLogin_Helper_Data extends Plumrocket_SocialLogin_Helper_M
 			$session->setData(self::SHOW_POPUP_PARAM_NAME, true);
 		}else{
 			$session->unsetData(self::SHOW_POPUP_PARAM_NAME);
+		}
+
+		return $show;
+	}
+
+	public function apiCall($params = null)
+	{
+		$session = Mage::getSingleton('customer/session');
+		$show = $session->getData(self::API_CALL_PARAM_NAME);
+
+		if($params) {
+			$session->setData(self::API_CALL_PARAM_NAME, $params);
+		}else{
+			$session->unsetData(self::API_CALL_PARAM_NAME);
 		}
 
 		return $show;
