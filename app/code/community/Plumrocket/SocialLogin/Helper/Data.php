@@ -142,12 +142,34 @@ class Plumrocket_SocialLogin_Helper_Data extends Plumrocket_SocialLogin_Helper_M
             ->getDefaultGroup()
             ->getDefaultStoreId();
 
+        if(!$defaultStoreId) {
+        	$websites = Mage::app()->getWebsites(true);
+        	if(!empty($websites[1])) {
+        		$defaultStoreId = $websites[1]
+		            ->getDefaultGroup()
+		            ->getDefaultStoreId();
+        	}
+        }
+
+        if(!$defaultStoreId) {
+        	$defaultStoreId = 1;
+        }
+
         $url = Mage::app()->getStore($defaultStoreId)->getUrl('pslogin/account/login', array('type' => $provider, '_nosid' => true));
 
         if(false !== ($length = stripos($url, '?'))) {
         	$url = substr($url, 0, $length);
         }
 
+        if($byRequest) {
+        	/*if(Mage::getStoreConfig('web/url/use_store')) {
+        		// $url = str_replace('admin/', '', $url);
+        	}*/
+        	if(Mage::getStoreConfig('web/seo/use_rewrites')) {
+        		$url = str_replace('index.php/', '', $url);
+        	}
+        }
+        
         return $url;
 	}
 

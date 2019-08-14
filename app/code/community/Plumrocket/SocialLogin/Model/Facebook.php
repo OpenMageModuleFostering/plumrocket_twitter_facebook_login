@@ -69,10 +69,13 @@ class Plumrocket_SocialLogin_Model_Facebook extends Plumrocket_SocialLogin_Model
         if($response = $this->_call('https://graph.facebook.com/oauth/access_token', $params)) {
             parse_str($response, $token);
         }
+        $this->_setLog($response, true);
+        $this->_setLog($token, true);
     
         if (isset($token['access_token'])) {
             $params = array(
-                'access_token' => $token['access_token']
+                'access_token'  => $token['access_token'],
+                'fields'        => implode(',', $this->_fields)
             );
     
             if($response = $this->_call('https://graph.facebook.com/me', $params)) {
@@ -83,7 +86,7 @@ class Plumrocket_SocialLogin_Model_Facebook extends Plumrocket_SocialLogin_Model
                 $data['picture'] = 'https://graph.facebook.com/'. $data['id'] .'/picture?return_ssl_resources=true';
             }
             
-            $this->_setLog($data);
+            $this->_setLog($data, true);
         }
  
         if(!$this->_userData = $this->_prepareData($data)) {

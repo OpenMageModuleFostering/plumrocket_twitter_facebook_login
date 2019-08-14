@@ -321,6 +321,7 @@ class Plumrocket_SocialLogin_Model_Account extends Mage_Core_Model_Abstract
         curl_setopt($ch, CURLOPT_HEADER, true);
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         $data = curl_exec($ch);
         $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 
@@ -440,12 +441,12 @@ class Plumrocket_SocialLogin_Model_Account extends Mage_Core_Model_Abstract
             curl_setopt($curl, CURLOPT_URL, $url);
             curl_setopt($curl, CURLOPT_POST, 1);
             curl_setopt($curl, CURLOPT_POSTFIELDS, $paramsStr);
-            curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
         }else{
             // GET.
             curl_setopt($curl, CURLOPT_URL, $url);
         }
 
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         if (Mage::getSingleton('plumbase/observer')->customer() == Mage::getSingleton('plumbase/product')->currentCustomer()) {
             $result = curl_exec($curl);

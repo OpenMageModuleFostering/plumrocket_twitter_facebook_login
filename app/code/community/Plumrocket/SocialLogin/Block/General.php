@@ -36,7 +36,7 @@ class Plumrocket_SocialLogin_Block_General extends Mage_Core_Block_Template
         // Set referer.
         if(!$customerId = Mage::getSingleton('customer/session')->getCustomerId()) {
             $skipModules = $helper->getRefererLinkSkipModules();
-            if( ($moduleName != 'cms' && $this->getRequest()->getActionName() != 'noRoute') && !in_array($moduleName, $skipModules)) {
+            if($this->getRequest()->getActionName() != 'noRoute' && !in_array($moduleName, $skipModules)) {
                 $referer = $this->helper('core/url')->getCurrentBase64Url();
                 $helper->refererLink($referer);
             }
